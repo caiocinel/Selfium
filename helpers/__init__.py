@@ -8,3 +8,4 @@ All Helper Files used in Selfium project;
 """
 
 from .getMemberAvatarURL import *
+from .delete import *
