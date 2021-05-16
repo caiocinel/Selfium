@@ -1,7 +1,6 @@
 import platform, discord
-from auth.client import client
 from colorama import Fore
-from vars.client import client as self
+from vars.client import client
 from datetime import datetime
 Time = datetime.now()
 

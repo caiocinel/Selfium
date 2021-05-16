@@ -1,6 +1,7 @@
 import cli
 import auth
 import vars
+import events
 from config import cfg
 
 def client():
