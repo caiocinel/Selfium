@@ -1,4 +1,5 @@
 {
     "token": "",
-    "prefix": ""
+    "prefix": "",
+    "notifyTime": 3
 }
