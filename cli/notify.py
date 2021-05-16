@@ -58,3 +58,6 @@ async def makeEmbed(ctx, title, author, author_iconURL, description, thumbnail, 
     if (thumbnail):
         embed.set_thumbnail(url=f'{thumbnailImageURL}')
     await ctx.send(embed=embed)
+
+async def exception(ctx):
+    await error(ctx, f'Something went wrong, try again!', None, 5)
