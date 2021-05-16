@@ -8,3 +8,4 @@ All Client Events Files used in Selfium project;
 """
 
 from .on_ready import *
+from .commands import *
