@@ -16,4 +16,4 @@ async def avatar(ctx, Member: discord.Member=None):
         embed.set_image(url=target.avatar_url)
         await ctx.send(embed=embed)
     except:
-        await notify.error(ctx, f'Something went wrong, try again!', None, 5)
+        await notify.exception()
