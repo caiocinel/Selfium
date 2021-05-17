@@ -28,6 +28,5 @@ async def deleteMyMessages(ctx, arg, amount=None):
                     await asyncio.sleep(0.33)
                 except:
                     pass               
-        except Exception as e:
-            print(e)
-            #await notify.exception(ctx)
+        except:
+            await notify.exception(ctx)
