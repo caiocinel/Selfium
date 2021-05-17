@@ -1,7 +1,6 @@
 import discord
 from vars.client import client
-from helpers import delete
-from cli import notify
+from helpers import delete, notify
 
 @client.command(aliases=['Avatar'])
 async def avatar(ctx, Member: discord.Member=None):

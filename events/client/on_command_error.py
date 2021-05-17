@@ -1,6 +1,6 @@
 import cli
 from vars.client import client
-from cli import notify
+from helpers import notify
 
 @client.event
 async def on_command_error(ctx, error):

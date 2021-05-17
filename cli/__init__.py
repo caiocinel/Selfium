@@ -11,4 +11,3 @@ from .logo import *
 from .clear import *
 from .welcome import *
 from .tokenError import *
-from .notify import *

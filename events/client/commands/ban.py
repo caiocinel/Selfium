@@ -1,6 +1,6 @@
 import discord
 from vars.client import client
-from cli import notify
+from helpers import notify
 
 @client.command(aliases=['Ban'])
 async def ban(ctx, Member: discord.Member = None):
