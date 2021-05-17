@@ -10,3 +10,4 @@ All Client Command Files used in Selfium project;
 
 from .avatar import *
 from .ban import *
+from .deleteOwnMessages import *
