@@ -1,6 +1,5 @@
 import discord
 from vars.client import client
-from helpers import delete, getUser
 from cli import notify
 
 @client.command(aliases=['Ban'])
@@ -15,4 +14,4 @@ async def ban(ctx, Member: discord.Member = None):
         else:
             await notify.error(ctx, 'You are not allowed to ban here :( ', None, 5)
     except:
-        await notify.error(ctx, f'Something went wrong, try again!', None, 5)
+        notify.exception()
