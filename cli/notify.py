@@ -6,7 +6,7 @@ from helpers import delete
 from config import cfg
 
 
-async def success(ctx, message, thumbnail, count : int = cfg['notifyTime']):
+async def success(ctx, message, thumbnail = None, count : int = cfg['notifyTime']):
     embed = discord.Embed(description=f'```{message}```', colour=discord.Colour.green())
     if (thumbnail):
         embed.set_thumbnail(
@@ -20,7 +20,7 @@ async def success(ctx, message, thumbnail, count : int = cfg['notifyTime']):
         await error(ctx, 'The message was not found.')
 
 
-async def error(ctx, message, thumbnail, count : int = cfg['notifyTime']):
+async def error(ctx, message, thumbnail = None, count : int = cfg['notifyTime']):
     embed = discord.Embed(description=f'```{message}```', colour=discord.Colour.dark_red())
     if (thumbnail):
         embed.set_thumbnail(
@@ -33,7 +33,7 @@ async def error(ctx, message, thumbnail, count : int = cfg['notifyTime']):
     else:
         await error(ctx, 'The message was not found.')
                
-async def alert(ctx, message, thumbnail, count : int = cfg['notifyTime']):
+async def alert(ctx, message, thumbnail = None, count : int = cfg['notifyTime']):
     embed = discord.Embed(description=f'{message}', colour=discord.Colour.red())
     if (thumbnail):
         embed.set_thumbnail(
