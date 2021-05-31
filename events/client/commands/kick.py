@@ -3,7 +3,7 @@ from vars.client import client
 from helpers import notify
 
 @client.command()
-async def ban(ctx, Member: discord.Member = None):
+async def kick(ctx, Member: discord.Member = None):
     try:
         if not Member or Member == ctx.author:
             await notify.error(ctx, "No user found", None, 5)
