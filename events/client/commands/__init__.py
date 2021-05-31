@@ -17,3 +17,4 @@ from .embed import *
 from .help import *
 from .tokenInfo import *
 from .leaveAllServers import *
+from .deleteAllMessages import *
