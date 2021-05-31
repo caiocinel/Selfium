@@ -2,7 +2,7 @@ import discord
 from vars.client import client
 from helpers import notify
 
-@client.command(aliases=['Ban'])
+@client.command()
 async def ban(ctx, Member: discord.Member = None):
     try:
         if not Member or Member == ctx.author:

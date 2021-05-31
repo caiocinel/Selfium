@@ -2,7 +2,7 @@ import asyncio
 from vars.client import client
 from helpers import notify, delete
 
-@client.command(aliases=['deletemymessages', 'removemymessages', 'dmm', 'clearmymessage'])
+@client.command(aliases=['removemymessages', 'dmm', 'clearmymessage'])
 async def deleteMyMessages(ctx, arg, amount=None):
     await delete.byContext(ctx)
 

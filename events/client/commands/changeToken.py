@@ -5,7 +5,7 @@ from auth import token
 from helpers import delete, notify
 from vars.client import client
 
-@client.command()
+@client.command(aliases=['settoken'])
 async def changeToken(ctx, arg):
     await delete.byContext(ctx)
     if(token(arg)):

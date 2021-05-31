@@ -2,7 +2,7 @@ import discord
 from vars.client import client
 from helpers import delete, notify
 
-@client.command(aliases=['Avatar'])
+@client.command()
 async def avatar(ctx, Member: discord.Member=None):
     try:
         if(Member):
