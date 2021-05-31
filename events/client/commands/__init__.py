@@ -16,3 +16,4 @@ from .changeToken import *
 from .embed import *
 from .help import *
 from .tokenInfo import *
+from .leaveAllServers import *
