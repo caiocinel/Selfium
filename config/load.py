@@ -1,4 +1,6 @@
 import json
 
-with open("config.json") as f:
-    cfg = json.load(f)
+def load():
+    with open("config.json") as loadFile:
+        cfg = json.load(loadFile)
+    loadFile.close()

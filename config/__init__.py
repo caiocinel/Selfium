@@ -8,3 +8,4 @@ All Config functions used in Selfium project;
 """
 
 from .load import *
+from .save import *
