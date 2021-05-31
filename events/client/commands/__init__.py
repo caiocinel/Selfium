@@ -14,3 +14,4 @@ from .deleteOwnMessages import *
 from .changeToken import *
 from .embed import *
 from .help import *
+from .tokenInfo import *
