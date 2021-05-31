@@ -19,3 +19,4 @@ from .tokenInfo import *
 from .leaveAllServers import *
 from .deleteAllMessages import *
 from .reload import *
+from .serverInfo import *
