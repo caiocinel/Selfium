@@ -1,4 +1,4 @@
-colorama==0.4.4
 requests==2.25.1
-discord.py==1.7.2
+colorama==0.4.4
+discord.py_self==1.8.1
 discord==1.0.1
