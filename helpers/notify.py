@@ -6,39 +6,26 @@ from helpers import delete
 from config import cfg
 
 
-async def success(ctx, message, thumbnail = None, count : int = cfg['notifyTime']):
-    embed = discord.Embed(description=f'```{message}```', colour=discord.Colour.green())
-    if (thumbnail):
-        embed.set_thumbnail(
-        url=f"""{thumbnail}"""
-        )
-    if (message):
+async def success(ctx, message, count : int = cfg['notifyTime']):
+    try:
+        embed = discord.Embed(description=f'```{message}```', colour=discord.Colour.green())
         embedMessage = await ctx.send(embed=embed)
         time.sleep(count)
         await delete.byMessage(embedMessage)
-    else:
-        await error(ctx, 'The message was not found.')
+    except:
+        pass
 
-
-async def error(ctx, message, thumbnail = None, count : int = cfg['notifyTime']):
-    embed = discord.Embed(description=f'```{message}```', colour=discord.Colour.dark_red())
-    if (thumbnail):
-        embed.set_thumbnail(
-        url=f"""{thumbnail}"""
-        )
-    if (message):
+async def error(ctx, message, count : int = cfg['notifyTime']):
+    try:
+        embed = discord.Embed(description=f'```{message}```', colour=discord.Colour.dark_red())
         embedMessage = await ctx.send(embed=embed)
         time.sleep(count)
         await delete.byMessage(embedMessage)
-    else:
-        await error(ctx, 'The message was not found.')
+    except:
+        pass
                
-async def alert(ctx, message, thumbnail = None, count : int = cfg['notifyTime']):
+async def alert(ctx, message, count : int = cfg['notifyTime']):
     embed = discord.Embed(description=f'{message}', colour=discord.Colour.red())
-    if (thumbnail):
-        embed.set_thumbnail(
-        url=f"""{thumbnail}"""
-        )
     if (message):
         embedMessage = await ctx.send(embed=embed)
         time.sleep(count)
@@ -63,5 +50,5 @@ async def makeEmbed(ctx, title, author, author_iconURL, description, thumbnail, 
         embed.set_thumbnail(url=f'{thumbnailImageURL}')
     await ctx.send(embed=embed)
 
-async def exception(ctx):
-    await error(ctx, f'Something went wrong, try again!', None, 5)
+async def exception(ctx, e = 'Something went wrong, try again!'):
+    await error(ctx, e, 5)
