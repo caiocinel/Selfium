@@ -4,7 +4,7 @@ from vars.client import client
 from helpers import notify
 
 @client.command()
-async def ban(ctx):
+async def kick(ctx):
     try:
         if not ctx.message.mentions:
             await notify.error(ctx, "No user found", 5)
