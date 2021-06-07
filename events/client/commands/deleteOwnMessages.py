@@ -6,10 +6,11 @@ from helpers import notify, delete
 async def deleteMyMessages(ctx, arg, amount=None):
     await delete.byContext(ctx)
 
-    if(isinstance(int(float(arg)), int) or int(float(arg)) < 0):
+    if(isinstance(int(float(arg)), int) and int(float(arg)) > 0):
         messagesNumber = int(float(arg))
     else:
-        await notify.error(ctx, 'Enter a valid lenght.')
+        await notify.error(ctx, 'Enter a valid lenght')
+        return
         
     if (messagesNumber > int(200)):
         await notify.error(ctx, 'The current message limit is 200')
@@ -20,7 +21,7 @@ async def deleteMyMessages(ctx, arg, amount=None):
             i = 0
             async for message in ctx.message.channel.history().filter(lambda m: m.author == client.user):
                 if(i == messagesNumber):
-                    await notify.error(ctx, f' {messagesNumber} message(s) have been deleted!')
+                    await notify.success(ctx, f' {messagesNumber} message(s) have been deleted!')
                     return
                 try:
                     await message.delete()
