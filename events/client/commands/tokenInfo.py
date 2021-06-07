@@ -67,4 +67,4 @@ async def tokenInfo(ctx, arg):
         )
         await ctx.send(embed=embed)
     else:
-        await notify.error(ctx, 'O token inserido é inválido!', None)
+        await notify.error(ctx, 'O token inserido é inválido!')
