@@ -2,7 +2,7 @@ import discord
 from vars.client import client
 from helpers import delete, notify
 
-@client.command()
+@client.command(aliases=['profilepicture'])
 async def avatar(ctx):
 
     if(ctx.message.mentions):
