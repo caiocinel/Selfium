@@ -33,9 +33,9 @@ async def alert(ctx, message, count : int = cfg['notifyTime']):
     else:
         await error(ctx, 'The message was not found.', None)
 
-async def plain(ctx, title, message, count : int = cfg['notifyTime']):
+async def plain(ctx, title, message):
     embed = discord.Embed(title=f'{title}',description=f'{message}')
-    ctx.send(embed=embed)
+    await ctx.send(embed=embed)
         
 async def makeEmbed(ctx, title, author, author_iconURL, description, thumbnail, thumbnailImageURL, fields, footer, footerText, footer_iconURL, timestamp):
     embed = discord.Embed(title=f'{title}', description=f'{description}', Color=discord.Colour.purple())

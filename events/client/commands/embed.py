@@ -5,9 +5,9 @@ from helpers import delete, notify
 #>> thumbnailImageURL, fields, footer, footerText, footer_iconURL, timestamp):
 
 @client.command(aliases=['embed'])
-async def simpleEmbed(ctx, title, *, arg):
-    await notify.plain(ctx, title, arg)
-    delete.byContext(ctx)
+async def simpleEmbed(ctx, titulo, *args):
+    await delete.byContext(ctx)
+    await notify.plain(ctx, titulo, args)
 
 @client.command()
 async def completeEmbed(ctx, title, author, description, thumbnail, footer, timestamp):
