@@ -6,12 +6,15 @@ from helpers import notify, delete
 async def deleteAllMessages(ctx):
     await delete.byContext(ctx)
 
-    if(ctx.message.author.guild_permissions.manage_messages):
-        async for message in ctx.message.channel.history():
-            try:
-                await message.delete()
-                await asyncio.sleep(0.33)
-            except:
-                pass         
-    else:
-        notify.error("You can't do this here")      
+    if(ctx.message.guild) :
+        if not (ctx.message.author.guild_permissions.manage_messages):
+            notify.error(ctx,"You can't do this here")  
+            return
+
+    async for message in ctx.message.channel.history():
+        try:
+            await message.delete()
+            await asyncio.sleep(0.33)
+        except:
+            pass         
+        
