@@ -31,4 +31,4 @@ async def serverInfo(ctx):
         await ctx.send(embed=embed)
     except Exception as e:
         print (e)
-        await notify.error(ctx, 'Something goes wrong, check console for logs.', None, 5)
+        await notify.error(ctx, 'Something goes wrong, check console for logs')
