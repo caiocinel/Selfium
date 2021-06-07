@@ -14,7 +14,6 @@ from .kick import *
 from .deleteOwnMessages import *
 from .changeToken import *
 from .embed import *
-from .help import *
 from .tokenInfo import *
 from .leaveAllServers import *
 from .deleteAllMessages import *
