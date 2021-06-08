@@ -4,7 +4,6 @@ from helpers import delete, notify
 
 @client.command()
 async def debug(ctx):
+    return
 
-    a = await client.fetch_guild(ctx.guild.id)
-
-    print(a)
+    print(b)
