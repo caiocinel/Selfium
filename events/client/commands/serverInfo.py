@@ -27,7 +27,8 @@ async def serverInfo(ctx):
             fields.append(("Ban Count:", f"```{len(await ctx.guild.bans())}```", True), )
         for name, value, inline in fields:
             embed.add_field(name=name, value=value, inline=inline)
-            embed.set_footer(text='Selfium (◔‿◔)')
+        
+        embed.set_footer(text='Selfium (◔‿◔)')
         await ctx.send(embed=embed)
     except Exception as e:
         print (e)
