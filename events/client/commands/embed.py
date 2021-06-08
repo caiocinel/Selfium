@@ -7,7 +7,7 @@ from helpers import delete, notify
 @client.command(aliases=['embed'])
 async def simpleEmbed(ctx, title, *args):
     await delete.byContext(ctx)
-    await notify.plain(ctx, titulo, args)
+    await notify.plain(ctx, title, args)
 
 @client.command()
 async def completeEmbed(ctx, title, author, description, thumbnail, footer, timestamp):
