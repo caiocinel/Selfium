@@ -21,3 +21,4 @@ from .deleteAllMessages import *
 from .reload import *
 from .serverInfo import *
 from .userInfo import *
+from .inviteInfo import *
