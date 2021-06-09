@@ -12,7 +12,7 @@ async def ban(ctx):
         else:
             target = ctx.message.mentions
 
-        if ctx.message.author.guild_permissions.ban_members:
+        if ctx.guild and ctx.message.author.guild_permissions.ban_members:
 
             for t in range(len(target)):
                 await asyncio.sleep(0.3)
