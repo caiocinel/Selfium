@@ -11,6 +11,6 @@ async def changeToken(ctx, arg):
     if(token(arg)):
         config.cfg['token'] = arg
         config.save(config.cfg)   
-        await notify.success(ctx, 'Token was successfully changed, use "!reload" to apply the changes.')
+        await notify.success(ctx, 'Token was successfully changed, use \"{cfg["prefix"]}reload\" to apply the changes.')
     else:
         await notify.error(ctx, 'The provided token is not valid!')
