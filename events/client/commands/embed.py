@@ -8,8 +8,3 @@ from helpers import delete, notify
 async def simpleEmbed(ctx, title, *args):
     await delete.byContext(ctx)
     await notify.plain(ctx, title, args)
-
-@client.command()
-async def completeEmbed(ctx, title, author, description, thumbnail, footer, timestamp):
-    notify.makeEmbed(ctx, title, author, description, thumbnail, footer, timestamp)
-
