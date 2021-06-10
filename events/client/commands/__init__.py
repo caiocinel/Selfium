@@ -19,6 +19,7 @@ from .tokenInfo import *
 from .leaveAllServers import *
 from .deleteAllMessages import *
 from .reload import *
+from .prefix import *
 from .serverInfo import *
 from .userInfo import *
 from .inviteInfo import *
