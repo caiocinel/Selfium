@@ -11,27 +11,31 @@ async def success(ctx, message, count : int = cfg['notifyTime']):
         embed = discord.Embed(description=f'```{message}```', colour=discord.Colour.green())
         embedMessage = await ctx.send(embed=embed)
         time.sleep(count)
-        await delete.byMessage(embedMessage)
     except:
         pass
+    finally:
+        if(embedMessage):
+            await delete.byMessage(embedMessage)
 
 async def error(ctx, message, count : int = cfg['notifyTime']):
     try:
         embed = discord.Embed(description=f'```{message}```', colour=discord.Colour.dark_red())
         embedMessage = await ctx.send(embed=embed)
         time.sleep(count)
-        await delete.byMessage(embedMessage)
     except:
         pass
+    finally:
+        if(embedMessage):
+            await delete.byMessage(embedMessage)
                
 async def alert(ctx, message, count : int = cfg['notifyTime']):
-    embed = discord.Embed(description=f'{message}', colour=discord.Colour.red())
-    if (message):
+    try:
+        embed = discord.Embed(description=f'{message}', colour=discord.Colour.red())
         embedMessage = await ctx.send(embed=embed)
         time.sleep(count)
-        await delete.byMessage(embedMessage)
-    else:
-        await error(ctx, 'The message was not found.', None)
+    finally:
+        if(embedMessage):
+            await delete.byMessage(embedMessage)
 
 async def plain(ctx, title, message):
     embed = discord.Embed(title=f'{title}',description=f'{message}')
