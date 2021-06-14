@@ -30,7 +30,7 @@ async def error(ctx, message, count : int = cfg['notifyTime']):
                
 async def alert(ctx, message, count : int = cfg['notifyTime']):
     try:
-        embed = discord.Embed(description=f'{message}', colour=discord.Colour.red())
+        embed = discord.Embed(description=f'{message}', colour=discord.Colour.gold())
         embedMessage = await ctx.send(embed=embed)
         time.sleep(count)
     finally:
