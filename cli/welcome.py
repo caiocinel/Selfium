@@ -2,6 +2,7 @@ import platform, discord
 from colorama import Fore
 from vars.client import client
 from datetime import datetime
+from config import cfg
 Time = datetime.now()
 
 async def welcome_message():
@@ -10,4 +11,5 @@ async def welcome_message():
     > {Fore.GREEN}Connected At: {Fore.BLUE}{Time.strftime("%H:%M:%S")} | {Time.strftime("%Y-%m-%d")}{Fore.CYAN}.
     > {Fore.GREEN}PyVersion: {Fore.BLUE}{platform.python_version()}{Fore.CYAN}.
     > {Fore.GREEN}DpVersion: {Fore.BLUE}{discord.__version__}{Fore.CYAN}.
+    > {Fore.GREEN}Prefix: {Fore.BLUE}{cfg['prefix']}{Fore.CYAN}
     """)
