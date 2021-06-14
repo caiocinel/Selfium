@@ -2,7 +2,9 @@ import discord
 import asyncio
 from vars.client import client
 from helpers import notify
+from discord.ext import commands
 
+@commands.guild_only()
 @client.command()
 async def kick(ctx):
     try:

@@ -1,8 +1,10 @@
 import discord
 import asyncio
+from discord.ext import commands
 from vars.client import client
 from helpers import notify
 
+@commands.guild_only()
 @client.command()
 async def ban(ctx):
     try:
@@ -12,7 +14,7 @@ async def ban(ctx):
         else:
             target = ctx.message.mentions
 
-        if ctx.guild and ctx.message.author.guild_permissions.ban_members:
+        if ctx.message.author.guild_permissions.ban_members:
 
             for t in range(len(target)):
                 await asyncio.sleep(0.3)

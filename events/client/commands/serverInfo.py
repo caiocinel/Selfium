@@ -1,8 +1,9 @@
 import discord
 from helpers import getUser, notify, delete
 from vars.client import client
+from discord.ext import commands
 
-
+@commands.guild_only()
 @client.command()
 async def serverInfo(ctx):
     try:
