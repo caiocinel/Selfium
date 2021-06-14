@@ -18,10 +18,11 @@ def msg(message):
         guild = 'DM'
     message = message.content
     dt_string = now.strftime("%d/%m/%Y %H:%M:%S")
-    with open("./logs/msg.log", "a", encoding="utf-8") as errorFile:
+    with open("./logs/msg.log", "a", encoding="utf-8") as msgFile:
         if not author.name:
             text = ("[" + dt_string +' - ' + guild+"] ")+ 'Webhook - ' + message + '\n'   
         else:
             text = ("[" + dt_string +' - ' + guild+"] ")+ author.name + '#' + author.discriminator + '-' + message + '\n'
-        errorFile.write(text)
-    errorFile.close()
+        msgFile.write(text)
+    msgFile.close()
+
