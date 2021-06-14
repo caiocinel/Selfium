@@ -51,6 +51,7 @@ We are still taking the initial steps in the development of this project, new fe
 |[tokenInfo](https://github.com/caiocinel/Selfium/blob/main/events/client/commands/tokenInfo.py)   |Displays information about the token entered (be careful)|
 |[userInfo](https://github.com/caiocinel/Selfium/blob/main/events/client/commands/userInfo.py)   |Displays information about mentioned user|
 |[prefix](https://github.com/caiocinel/Selfium/blob/main/events/client/commands/prefix.py)   |Change Prefix used in Commands|
+|[messageLogging](https://github.com/caiocinel/Selfium/blob/main/events/client/commands/logMessages.py)   |Write all received messages in a file|
 
 ---------------------------------------------------------------------------------------
 
