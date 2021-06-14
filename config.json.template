@@ -1,5 +1,6 @@
 {
     "token": "",
     "prefix": "",
-    "notifyTime": 3
+    "notifyTime": 3,
+    "msgLogger" : 0
 }
