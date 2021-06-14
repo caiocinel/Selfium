@@ -1,7 +1,11 @@
 from vars.client import client
 
 async def byMember(member):
-    targetId = int(member.id)
+    if hasattr(member, 'id'):
+        targetId = int(member.id)
+    else:
+        targetId = member.author.id
+
     return await byID(targetId)
 
 async def byID(id):

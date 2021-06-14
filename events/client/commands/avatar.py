@@ -8,7 +8,7 @@ async def avatar(ctx):
     if(ctx.message.mentions):
         target = ctx.message.mentions
     else:
-        target = ctx.message.author
+        target = ctx.args
 
     await delete.byContext(ctx)
     try:
