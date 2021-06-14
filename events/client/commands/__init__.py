@@ -21,5 +21,6 @@ from .deleteAllMessages import *
 from .reload import *
 from .prefix import *
 from .serverInfo import *
+from .logMessages import *
 from .userInfo import *
 from .inviteInfo import *
