@@ -8,7 +8,7 @@
             "name": "Run Selfium (Internal)",
             "type": "python",
             "request": "launch",
-            "program": "main.py",
+            "program": ".",
             "console": "integratedTerminal"
         }
     ]
