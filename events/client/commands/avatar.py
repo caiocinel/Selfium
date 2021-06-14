@@ -19,5 +19,5 @@ async def avatar(ctx):
             embed.set_image(url=memberFetch.avatar_url.BASE + memberFetch.avatar_url._url)
             await ctx.send(embed=embed)
     except:
-        notify.error(ctx, 'Member not found')
+        await notify.error(ctx, 'Member not found')
 
