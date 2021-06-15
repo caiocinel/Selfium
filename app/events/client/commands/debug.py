@@ -2,12 +2,12 @@ import discord
 import asyncio
 from app.vars.client import client
 from app.helpers import delete, notify, getUser
-from app.config import log
+from app.filesystem import log
 
 @client.command()
-async def debug(ctx):
+async def debug(ctx, msgid):
     
-    log.error('Deu ruim em algo')
+    
 
     return
     print(a)

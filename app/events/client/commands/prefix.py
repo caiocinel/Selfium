@@ -1,4 +1,4 @@
-from app.config import cfg, save
+from app.filesystem import cfg, save
 from app.vars.client import client
 from app.helpers import delete, notify
 

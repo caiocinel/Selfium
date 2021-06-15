@@ -2,7 +2,7 @@
 import discord
 import time
 from app.helpers import delete
-from app.config import cfg
+from app.filesystem import cfg
 
 
 async def success(ctx, message, count : int = cfg['notifyTime']):

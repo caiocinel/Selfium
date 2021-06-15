@@ -3,7 +3,8 @@ import datetime
 import discord
 import re
 from app.auth import token
-from app.config import cfg, gift
+from app.filesystem import cfg, gift
+
 
 def giftProcess(message):
     data = gift.load()

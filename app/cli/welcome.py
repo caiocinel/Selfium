@@ -2,7 +2,7 @@ import platform, discord
 from colorama import Fore
 from app.vars import client
 from datetime import datetime
-from app.config import cfg
+from app.filesystem import cfg
 Time = datetime.now()
 
 async def welcome_message():

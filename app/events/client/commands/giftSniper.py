@@ -1,6 +1,6 @@
 from app.vars.client import client
 from app.auth import token
-from app.config import cfg, save
+from app.filesystem import cfg, save
 from app.helpers import notify, delete
     
 @client.command(aliases=['nitroSniper'])
