@@ -114,3 +114,4 @@ dmypy.json
 .pyre/
 config.json
 .vscode/settings.json
+discord/
