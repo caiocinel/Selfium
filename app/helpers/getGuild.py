@@ -1,4 +1,4 @@
-from vars.client import client
+from app.vars.client import client
 
 async def byGuild(guild):
     targetId = int(guild.id)

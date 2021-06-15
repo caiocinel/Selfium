@@ -1,5 +1,5 @@
-from vars.client import client
-from config import log, cfg
+from app.vars.client import client
+from app.config import log, cfg
 
 @client.event
 async def on_message(message):

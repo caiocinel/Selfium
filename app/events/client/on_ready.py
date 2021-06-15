@@ -1,6 +1,6 @@
-import cli
-from vars.client import client
+import app.cli
+from app.vars.client import client
 
 @client.event
 async def on_ready():
-    await cli.welcome_message()
+    await app.cli.welcome_message()

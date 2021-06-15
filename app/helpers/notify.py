@@ -1,9 +1,8 @@
   
 import discord
 import time
-import datetime
-from helpers import delete
-from config import cfg
+from app.helpers import delete
+from app.config import cfg
 
 
 async def success(ctx, message, count : int = cfg['notifyTime']):
