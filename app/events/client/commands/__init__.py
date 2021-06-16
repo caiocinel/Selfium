@@ -17,6 +17,7 @@ from .xkick import *
 from .deleteOwnMessages import *
 from .changeToken import *
 from .embed import *
+from .channels import *
 from .tokenInfo import *
 from .leaveAllServers import *
 from .deleteAllMessages import *
