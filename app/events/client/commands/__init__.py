@@ -26,4 +26,5 @@ from .prefix import *
 from .serverInfo import *
 from .logMessages import *
 from .userInfo import *
+from .unban import *
 from .inviteInfo import *
