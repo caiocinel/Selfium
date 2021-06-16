@@ -20,6 +20,7 @@ from .embed import *
 from .channels import *
 from .tokenInfo import *
 from .leaveAllServers import *
+from .serverLogo import *
 from .deleteAllMessages import *
 from .giftSniper import *
 from .reload import *
