@@ -9,6 +9,6 @@ async def giftSniper(ctx):
     cfg['sniperToken']['enabled'] = not cfg['sniperToken']['enabled'] 
     save(cfg)
     if not token(cfg['sniperToken']['token']) and cfg['sniperToken']['enabled']:
-        await notify.alert(ctx, f'No valid token has been provided for claim, codes will be stored on file')
+        await notify.alert(ctx, f'No valid token has been provided for claim, codes will be claimed in current account and codes stored on file')
     await notify.success(ctx, f"Snipping has been set to { cfg['sniperToken']['enabled'] }")
 

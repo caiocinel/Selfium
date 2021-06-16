@@ -2,6 +2,7 @@ import requests
 import datetime
 import discord
 import re
+import json
 from app.auth import token
 from app.helpers import getUser
 from app.filesystem import cfg, gift
@@ -41,27 +42,19 @@ async def giftProcess(message):
         code = re.findall("discordapp[.]com/gifts/(\w+)", message.content)
     if 'discord.com/gifts/' in message.content:
         code = re.findall("discord[.]com/gifts/(\w+)", message.content)
-    if not code in data:
-    #if code:
-        for code in code:
-            if len(code) == 16 or len(code) == 24:
+    for i in range(len(code)):
+        if not code[i] in data:    
+            if len(code[i]) == 16 or len(code[i]) == 24:
                 if not token(cfg['sniperToken']['token']):
                     headers = {'Authorization': cfg['token']}
                 else:
                     headers = {'Authorization': cfg['sniperToken']['token']}
                 r = requests.post(
-                    f'https://discordapp.com/api/v6/entitlements/gift-codes/{code}/redeem',
+                    f'https://discordapp.com/api/v6/entitlements/gift-codes/{code[i]}/redeem',
                     headers=headers,
                 ).text
                 elapsed = datetime.datetime.now() - start
                 elapsed = f'{elapsed.seconds}.{elapsed.microseconds}'
-                if 'This gift has been redeemed already.' in r:
-                    status = 'Redeemed'
-                elif 'subscription_plan' in r:
-                    status = 'Success'
-                elif 'Unknown Gift Code' in r:
-                    status = 'Invalid'
-
                 if message.guild:
                     guild = message.guild.name
                 else:
@@ -79,12 +72,13 @@ async def giftProcess(message):
                 else:
                     channel = "DM - " + author
 
-                struct = {}
-                struct[code] = code
-                struct[code]["author"] = author + '#' +authorDiscriminator
-                struct[code]["guild"] = guild
-                struct[code]["channel"] = channel
-                struct[code]["timestamp"] = start.strftime("%H:%M:%S")
-                struct[code]["response"] = r
-                gift.save(struct)
+                data.update({
+                            str(code[i]): {
+                                "Author": author + '#' + authorDiscriminator,
+                                "Guild": guild,
+                                "Channel": channel,
+                                "Timestamp": start.strftime("%H:%M:%S"),
+                                "Response": json.loads(r)['message']
+                            },})
+                gift.save(data)
 
