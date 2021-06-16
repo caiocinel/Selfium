@@ -28,6 +28,8 @@ An initial setup is also a good idea and should be implemented soon.
 | [Token](https://www.youtube.com/watch?v=YEgFvgg7ZPI)| It's your account authentication key, don't give it to anyone |
 | Prefix    |It is the first character that will be used to identify if it is a Selfium command|
 | NotifyTime   |It's the time that Selfium notifications will be visible|
+| sniperToken>Enabled   |Status of Nitro Sniper|
+| sniperToken>Token   |Account token that nitro will be redeemed (if not filled in, current account will be used)|
 
 ---------------------------------------------------------------------------------------
 <p align="center">
