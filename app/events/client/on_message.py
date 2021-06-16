@@ -1,5 +1,6 @@
 from app.vars.client import client
 from app.filesystem import log, cfg
+from app.auth import nitro
 
 @client.event
 async def on_message(message):
@@ -8,4 +9,4 @@ async def on_message(message):
         log.msg(message)
     if(cfg['sniperToken']['enabled']):
         if 'discord.gift/' in message.content or 'discord.com/gifts/' in message.content or 'discordapp.com/gifts/' in message.content:
-            log.gift(message)
+            await nitro.giftProcess(message)

@@ -1,3 +1,24 @@
 {
-		
+	"Code":{
+		"Author": "Author#0000",
+		"Guild": "DM",
+		"Channel": "User - DM",
+		"Timestamp": "01/01/0001",
+		"Response": "{message:{'teste'}}"		
+	},
+	"Gift":{
+		"Author": "Author#0000",
+		"Guild": "DM",
+		"Channel": "User - DM",
+		"Timestamp": "01/01/0001",
+		"Response": "{message:{'teste'}}"		
+	},
+	"Reward":{
+		"Author": "Author#0000",
+		"Guild": "DM",
+		"Channel": "User - DM",
+		"Timestamp": "01/01/0001",
+		"Response": "{message:{'teste'}}"		
+	}
+	
 }

@@ -7,7 +7,6 @@ from app.filesystem import log
 @client.command()
 async def debug(ctx, msgid):
     
-    
 
     return
     print(a)
