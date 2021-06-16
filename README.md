@@ -17,7 +17,7 @@
     pip install -r requirements.txt
 
 # Configuration
-After installation, rename the file **"config.json.template"** > **"config.json"**, it stores all the client information and settings, be careful when sharing this file as the information is not encrypted.
+After installation, rename the file **"/data/config.json.template"** > **"/data/config.json"**, it stores all the client information and settings, be careful when sharing this file as the information is not encrypted.
 
 In it you can inform your account token, the prefix that will be used and the default notification time. At some point these settings can be changed directly by the client using commands, but this is currently not possible.
 
@@ -40,21 +40,21 @@ We are still taking the initial steps in the development of this project, new fe
 
 |Function|Description|
 |:---------------------------------------------------------------------------------------: | :-------------------------------------: |
-|[Avatar](https://github.com/caiocinel/Selfium/blob/main/events/client/commands/avatar.py) |Shows the avatar of the Mentioned user|
-|[Ban](https://github.com/caiocinel/Selfium/blob/main/events/client/commands/ban.py)    |Ban user from Guild|
-|[Kick](https://github.com/caiocinel/Selfium/blob/main/events/client/commands/kick.py)   |Kick user from Guild|
-|[changeToken](https://github.com/caiocinel/Selfium/blob/main/events/client/commands/changeToken.py)   |Change Client Token|
-|[deleteAllMessages](https://github.com/caiocinel/Selfium/blob/main/events/client/commands/kick.py)   |Delete all Channel Messages|
-|[deleteMyMessages](https://github.com/caiocinel/Selfium/blob/main/events/client/commands/deleteOwnMessages.py)   |Deletes the amount of messages sent by you|
-|[inviteInfo](https://github.com/caiocinel/Selfium/blob/main/events/client/commands/inviteInfo.py)   |Displays information about an invite link|
-|[leaveAllServers](https://github.com/caiocinel/Selfium/blob/main/events/client/commands/leaveAllServers.py)   |Quit all servers the client is on|
-|[reload](https://github.com/caiocinel/Selfium/blob/main/events/client/commands/reload.py)   |Reboot Selfium to Apply Settings|
-|[serverInfo](https://github.com/caiocinel/Selfium/blob/main/events/client/commands/serverInfo.py)   |Displays information about the current server|
-|[tokenInfo](https://github.com/caiocinel/Selfium/blob/main/events/client/commands/tokenInfo.py)   |Displays information about the token entered (be careful)|
-|[userInfo](https://github.com/caiocinel/Selfium/blob/main/events/client/commands/userInfo.py)   |Displays information about mentioned user|
-|[prefix](https://github.com/caiocinel/Selfium/blob/main/events/client/commands/prefix.py)   |Change Prefix used in Commands|
-|[messageLogging](https://github.com/caiocinel/Selfium/blob/main/events/client/commands/logMessages.py)   |Write all received messages in a file|
-|[nitroSniper](https://github.com/caiocinel/Selfium/blob/main/events/client/commands/giftSniper.py)   |Redeem all received nitro gifts|
+|[Avatar](https://github.com/caiocinel/Selfium/blob/main/app/events/client/commands/avatar.py) |Shows the avatar of the Mentioned user|
+|[Ban](https://github.com/caiocinel/Selfium/blob/main/app/events/client/commands/ban.py)    |Ban user from Guild|
+|[Kick](https://github.com/caiocinel/Selfium/blob/main/app/events/client/commands/kick.py)   |Kick user from Guild|
+|[changeToken](https://github.com/caiocinel/Selfium/blob/main/app/events/client/commands/changeToken.py)   |Change Client Token|
+|[deleteAllMessages](https://github.com/caiocinel/Selfium/blob/main/app/events/client/commands/kick.py)   |Delete all Channel Messages|
+|[deleteMyMessages](https://github.com/caiocinel/Selfium/blob/main/app/events/client/commands/deleteOwnMessages.py)   |Deletes the amount of messages sent by you|
+|[inviteInfo](https://github.com/caiocinel/Selfium/blob/main/app/events/client/commands/inviteInfo.py)   |Displays information about an invite link|
+|[leaveAllServers](https://github.com/caiocinel/Selfium/blob/main/app/events/client/commands/leaveAllServers.py)   |Quit all servers the client is on|
+|[reload](https://github.com/caiocinel/Selfium/blob/main/app/events/client/commands/reload.py)   |Reboot Selfium to Apply Settings|
+|[serverInfo](https://github.com/caiocinel/Selfium/blob/main/app/events/client/commands/serverInfo.py)   |Displays information about the current server|
+|[tokenInfo](https://github.com/caiocinel/Selfium/blob/main/app/events/client/commands/tokenInfo.py)   |Displays information about the token entered (be careful)|
+|[userInfo](https://github.com/caiocinel/Selfium/blob/main/app/events/client/commands/userInfo.py)   |Displays information about mentioned user|
+|[prefix](https://github.com/caiocinel/Selfium/blob/main/app/events/client/commands/prefix.py)   |Change Prefix used in Commands|
+|[messageLogging](https://github.com/caiocinel/Selfium/blob/main/app/events/client/commands/logMessages.py)   |Write all received messages in a file|
+|[nitroSniper](https://github.com/caiocinel/Selfium/blob/main/app/events/client/commands/giftSniper.py)   |Redeem all received nitro gifts|
 
 ---------------------------------------------------------------------------------------
 
