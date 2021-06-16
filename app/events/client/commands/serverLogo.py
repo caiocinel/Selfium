@@ -1,7 +1,9 @@
 import discord
+from discord.ext import commands
 from app.vars.client import client
 from app.helpers import delete, notify, getUser
 
+@commands.guild_only()
 @client.command(aliases=['servericon','guildicon','guildlogo'])
 async def serverLogo(ctx):
     await delete.byContext(ctx)
