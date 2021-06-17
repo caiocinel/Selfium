@@ -1,7 +1,9 @@
 import asyncio
+from discord.ext import commands
 from app.vars.client import client
 from app.helpers import notify, delete
 
+@commands.guild_only()
 @client.command(aliases=['removeallmessages', 'DAM', 'clearChannel'])
 async def deleteAllMessages(ctx):
     await delete.byContext(ctx)
