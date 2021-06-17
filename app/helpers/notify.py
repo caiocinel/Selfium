@@ -36,8 +36,11 @@ async def alert(ctx, message, count : int = cfg['notifyTime']):
         if(embedMessage):
             await delete.byMessage(embedMessage)
 
-async def plain(ctx, title, message):
-    embed = discord.Embed(title=f'{title}',description=f'{message}')
+async def plain(ctx, message, title=None):
+    embed = discord.Embed()
+    if(title):
+        embed.title = title
+    embed.description = message
     await ctx.send(embed=embed)
 
 async def exception(ctx, e = 'Something went wrong, try again!'):
