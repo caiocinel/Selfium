@@ -55,6 +55,13 @@ We are still taking the initial steps in the development of this project, new fe
 |[prefix](https://github.com/caiocinel/Selfium/blob/main/app/events/client/commands/prefix.py)   |Change Prefix used in Commands|
 |[messageLogging](https://github.com/caiocinel/Selfium/blob/main/app/events/client/commands/logMessages.py)   |Write all received messages in a file|
 |[nitroSniper](https://github.com/caiocinel/Selfium/blob/main/app/events/client/commands/giftSniper.py)   |Redeem all received nitro gifts|
+|[channels](https://github.com/caiocinel/Selfium/blob/main/app/events/client/commands/channels.py)   |Displays all channels on the server, including those you cannot see|
+|[serverBanner](https://github.com/caiocinel/Selfium/blob/main/app/events/client/commands/serverBanner.py)   |Show server banner|
+|[serverLogo](https://github.com/caiocinel/Selfium/blob/main/app/events/client/commands/serverLogo.py)   |Show server logo|
+|[xban](https://github.com/caiocinel/Selfium/blob/main/app/events/client/commands/xban.py)    |Ban user from Guild using ID|
+|[xkick](https://github.com/caiocinel/Selfium/blob/main/app/events/client/commands/xkick.py)   |Kick user from Guild using ID|
+|[unban](https://github.com/caiocinel/Selfium/blob/main/app/events/client/commands/xkick.py)   |Unban user from Guild using ID|
+
 
 ---------------------------------------------------------------------------------------
 
