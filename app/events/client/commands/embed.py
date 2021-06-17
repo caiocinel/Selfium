@@ -1,10 +1,15 @@
 from app.vars.client import client
-from app.helpers import delete, notify
-
-#makeEmbed(ctx, title, author, author_iconURL, description, thumbnail, 
-#>> thumbnailImageURL, fields, footer, footerText, footer_iconURL, timestamp):
+from app.helpers import delete, notify, params
+from app.filesystem import cfg
 
 @client.command(aliases=['embed'])
-async def simpleEmbed(ctx, title, *args):
+async def simpleEmbed(ctx, *, args):
     await delete.byContext(ctx)
-    await notify.plain(ctx, title, args)
+    args = params.split(args)
+    if not len(args) > 2:
+        if len(args) == 2:
+            await notify.plain(ctx, args[0], args[1])
+        else:
+            await notify.plain(ctx, args[0])
+    else:
+        await notify.error(ctx, f'Bad Usage\nExample: {cfg["prefix"]}embed Message;;Title')
