@@ -1,11 +1,11 @@
 import json
 
-def load():
+def loadGift():
     with open("data/nitro.json") as giftFile:
         return json.load(giftFile)
     
 
-def save(data):
+def saveGift(data):
     with open("data/nitro.json", "w") as giftFile:
         giftFile.write(json.dumps(data))
     giftFile.close()

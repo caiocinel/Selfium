@@ -33,7 +33,7 @@ SOFTWARE.
 
 
 async def giftProcess(message):
-    data = gift.load()
+    data = gift.loadGift()
     senderData = await getUser.byMember(message.author)
     start = datetime.datetime.now()
     if "discord.gift/" in message.content:
@@ -80,5 +80,5 @@ async def giftProcess(message):
                                 "Timestamp": start.strftime("%H:%M:%S"),
                                 "Response": json.loads(r)['message']
                             },})
-                gift.save(data)
+                gift.saveGift(data)
 
