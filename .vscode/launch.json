@@ -9,8 +9,7 @@
             "type": "python",
             "request": "launch",
             "program": "__main__.py",
-            "console": "integratedTerminal",
-            "justMyCode": false
+            "console": "integratedTerminal"
         }
     ]
 }
