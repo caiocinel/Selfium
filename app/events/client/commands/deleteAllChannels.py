@@ -28,6 +28,6 @@ async def deleteAllChannels(ctx, *, arg: str.lower = ''):
             await asyncio.sleep(0.33)
         except:
             pass         
-        finally:
-            if(arg != 'all'):
-                await notify.success(ctx, f'Successful deleted {arg} channels')    
+    else:
+        if(arg != 'all'):
+            await notify.success(ctx, f'Successful deleted {arg} channels')    
