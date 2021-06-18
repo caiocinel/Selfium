@@ -4,15 +4,12 @@ from app.vars.client import client
 from app.helpers import notify, delete
 
 
-@commands.guild_only()
 @client.command(aliases=['removeallchannels', 'deleteChannels'])
+@commands.guild_only()
+@commands.has_permissions(manage_channels=True)
 async def deleteAllChannels(ctx, *, arg: str.lower = ''):
     await delete.byContext(ctx)
-
-    if not (ctx.message.author.guild_permissions.manage_channels):
-        notify.error(ctx,"You can't do this here")  
-        return
-
+    
     if(arg == 'text'):
         type = ctx.guild.text_channels
     elif(arg == 'voice'):

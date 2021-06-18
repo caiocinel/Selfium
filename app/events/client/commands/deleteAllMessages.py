@@ -3,16 +3,12 @@ from discord.ext import commands
 from app.vars.client import client
 from app.helpers import notify, delete
 
-@commands.guild_only()
 @client.command(aliases=['removeallmessages', 'DAM', 'clearChannel'])
+@commands.guild_only()
+@commands.has_permissions(manage_messages=True)
 async def deleteAllMessages(ctx):
     await delete.byContext(ctx)
-
-    if(ctx.message.guild) :
-        if not (ctx.message.author.guild_permissions.manage_messages):
-            notify.error(ctx,"You can't do this here")  
-            return
-
+    
     async for message in ctx.message.channel.history():
         try:
             await message.delete()

@@ -4,7 +4,6 @@ from app.helpers import delete, getUser, getGuild
 
 @client.command()
 async def inviteInfo(ctx, arg):
-    
     try:
         await delete.byContext(ctx)
     except:

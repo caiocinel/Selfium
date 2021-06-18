@@ -4,8 +4,9 @@ from app.vars.client import client
 from app.helpers import notify, getUser
 from discord.ext import commands
 
-@commands.guild_only()
 @client.command(aliases=['removeban','xunban','unbanid', 'unban_id', 'id_unban'])
+@commands.guild_only()
+@commands.has_permissions(ban_members=True)
 async def unban(ctx, arg=None):
     try:
         if not arg:
@@ -13,13 +14,9 @@ async def unban(ctx, arg=None):
             return
 
         target = await getUser.byID(arg)
-        if ctx.message.author.guild_permissions.ban_members:
-                await asyncio.sleep(0.3)
-                await ctx.guild.unban(target)
-                await notify.success(ctx, f'You have successfully unbanned the user {target.display_name}!', 8)
-
-        else:
-            await notify.error(ctx, 'You are not allowed to unbanned here :( ', 5)
+        await asyncio.sleep(0.3)
+        await ctx.guild.unban(target)
+        await notify.success(ctx, f'You have successfully unbanned the user {target.display_name}!', 8)
 
     except Exception as e:
         await notify.exception(ctx, e)
