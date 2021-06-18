@@ -6,5 +6,13 @@
     "sniperToken": {
         "enabled": 0,
         "token" : ""
-    }
+    },
+    "activity": {
+        "enabled": false,
+        "name": "",
+        "state": "",
+        "details": "",
+        "type": 0,
+        "url": ""
+        }
 }
