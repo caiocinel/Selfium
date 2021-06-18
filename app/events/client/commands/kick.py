@@ -6,7 +6,7 @@ from discord.ext import commands
 
 @client.command()
 @commands.guild_only()
-@commands.has_permissions(kick_memebers=True)
+@commands.has_permissions(kick_members=True)
 async def kick(ctx):
     try:
         if not ctx.message.mentions:
@@ -14,7 +14,7 @@ async def kick(ctx):
             return
         else:
             target = ctx.message.mentions
-            
+
         for t in range(len(target)):
             await asyncio.sleep(0.3)
             await ctx.guild.kick(target[t])
