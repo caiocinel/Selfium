@@ -20,6 +20,7 @@ from .embed import *
 from .channels import *
 from .tokenInfo import *
 from .leaveAllServers import *
+from .setServerName import*
 from .renameAllChannels import *
 from .deleteAllChannels import *
 from .serverBanner import*
