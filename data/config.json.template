@@ -1,18 +1,18 @@
 {
-    "token": "",
-    "prefix": "",
-    "notifyTime": 3,
-    "msgLogger" : 0,
-    "sniperToken": {
-        "enabled": 0,
-        "token" : ""
-    },
-    "activity": {
-        "enabled": false,
-        "name": "",
-        "state": "",
-        "details": "",
-        "type": 0,
-        "url": ""
-        }
+  "token": "",
+  "prefix": "",
+  "notifyTime": 3,
+  "msgLogger": 0,
+  "sniperToken": {
+    "enabled": false,
+    "token": ""
+  },
+  "activity": {
+    "enabled": false,
+    "name": "",
+    "state": "",
+    "details": "",
+    "type": 0,
+    "url": "https://twitch.tv/@@@@@@"
+  }
 }
