@@ -3,11 +3,11 @@ from app.vars.client import client
 from app.helpers import notify, delete
 
 @client.command(aliases=['removemymessages', 'dmm', 'clearmymessage'])
-async def deleteMyMessages(ctx, arg, amount=None):
+async def deleteMyMessages(ctx, amount):
     await delete.byContext(ctx)
 
-    if(isinstance(int(float(arg)), int) and int(float(arg)) > 0):
-        messagesNumber = int(float(arg))
+    if(isinstance(int(float(amount)), int) and int(float(amount)) > 0):
+        messagesNumber = int(float(amount))
     else:
         await notify.error(ctx, 'Enter a valid lenght')
         return

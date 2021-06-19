@@ -7,13 +7,9 @@ from discord.ext import commands
 @client.command(aliases=['banid','ban_id','id_ban'])
 @commands.guild_only()
 @commands.has_permissions(ban_members=True)
-async def xban(ctx, arg=None):
+async def xban(ctx, id):
     try:
-        if not arg:
-            await notify.error('User ID not provided')
-            return
-
-        target = await getUser.byID(arg)
+        target = await getUser.byID(id)
         await asyncio.sleep(0.3)
         await ctx.guild.ban(target)
         await notify.success(ctx, f'You have successfully banned the user {target.display_name}!', 8)

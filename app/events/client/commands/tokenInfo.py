@@ -6,10 +6,10 @@ from app.helpers import notify, delete
 from app.vars.client import client
 
 @client.command(aliases=['infotoken', 'searchtoken', 'getuserinfobytoken'])
-async def tokenInfo(ctx, arg):
+async def tokenInfo(ctx, token):
     await delete.byContext(ctx)
 
-    userInfo = auth.parse(auth.token(arg))
+    userInfo = auth.parse(auth.token(token))
     if (userInfo):
         if str(userInfo["phone"]) == "None":
             userInfo["phone"] = "❌"
@@ -57,7 +57,7 @@ async def tokenInfo(ctx, arg):
         Enabled NFSW: ```{str(userInfo['nsfw_allowed'])}```
         2FA: ```{str(userInfo['mfa_enabled'])}```
         Phone: ```{userInfo['phone']}```
-        Token: ```{arg}```
+        Token: ```{token}```
         """
             ),
             inline=True,

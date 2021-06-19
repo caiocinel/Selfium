@@ -7,16 +7,16 @@ from app.helpers import notify, delete
 @client.command(aliases=['removeallchannels', 'deleteChannels'])
 @commands.guild_only()
 @commands.has_permissions(manage_channels=True)
-async def deleteAllChannels(ctx, *, arg: str.lower = ''):
+async def deleteAllChannels(ctx, *, channelType: str.lower = ''):
     await delete.byContext(ctx)
     
-    if(arg == 'text'):
+    if(channelType == 'text'):
         type = ctx.guild.text_channels
-    elif(arg == 'voice'):
+    elif(channelType == 'voice'):
         type = ctx.guild.voice_channels
-    elif(arg == 'category'):
+    elif(channelType == 'category'):
         type = ctx.guild.categories
-    elif(arg == 'all'):
+    elif(channelType == 'all'):
         type = ctx.guild.channels
     else:
         await notify.error(ctx, 'Not provided channel type:\n Text | Voice | Category | All')
@@ -29,5 +29,5 @@ async def deleteAllChannels(ctx, *, arg: str.lower = ''):
         except:
             pass         
     else:
-        if(arg != 'all'):
-            await notify.success(ctx, f'Successful deleted {arg} channels')    
+        if(channelType != 'all'):
+            await notify.success(ctx, f'Successful deleted {channelType} channels')    

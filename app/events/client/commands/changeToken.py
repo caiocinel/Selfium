@@ -6,10 +6,10 @@ from app.helpers import delete, notify
 from app.vars.client import client
 
 @client.command(aliases=['settoken'])
-async def changeToken(ctx, arg):
+async def changeToken(ctx, token):
     await delete.byContext(ctx)
-    if(token(arg)):
-        filesystem.cfg['token'] = arg
+    if(token(token)):
+        filesystem.cfg['token'] = token
         filesystem.save(filesystem.cfg)   
         await notify.success(ctx, f"Token was successfully changed, use \"{filesystem.cfg['prefix']}reload\" to apply the changes.")
     else:

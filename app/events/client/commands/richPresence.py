@@ -38,45 +38,45 @@ async def updatePresence(ctx=None):
             await notify.alert(ctx, f'Rich Presence is not enabled\n Activate with {cfg["prefix"]}richPresence')
 
 @client.command()
-async def setPresenceName(ctx, *, arg):
-    cfg['activity']['name'] = arg
+async def setPresenceName(ctx, *, name):
+    cfg['activity']['name'] = name
     await updatePresence(ctx)
 
 @client.command()
-async def setPresenceState(ctx, *, arg):
-    cfg['activity']['state'] = arg
+async def setPresenceState(ctx, *, state):
+    cfg['activity']['state'] = state
     await updatePresence(ctx)
 
 @client.command()
-async def setPresenceDetails(ctx, *, arg):
-    cfg['activity']['details'] = arg
+async def setPresenceDetails(ctx, *, details):
+    cfg['activity']['details'] = details
     await updatePresence(ctx)
     discord.ActivityType
 
 @client.command()
-async def setPresenceURL(ctx, *, arg):
-    cfg['activity']['url'] = arg
+async def setPresenceURL(ctx, *, url):
+    cfg['activity']['url'] = url
     if(cfg['activity']['type']) != 1:
         await notify.alert(ctx,'Streaming will only be displayed if presence is set to "Streaming"')
     await updatePresence(ctx)
     discord.ActivityType
 
 @client.command()
-async def setPresenceType(ctx, *, arg: str.lower):
-    arg.upper()
-    if(arg == 'playing'):
+async def setPresenceType(ctx, *, type: str.lower):
+    type.upper()
+    if(type == 'playing'):
         cfg['activity']['type'] = 0
-    elif(arg == 'streaming'):
+    elif(type == 'streaming'):
         cfg['activity']['type'] = 1
-    elif(arg == 'listening'):
+    elif(type == 'listening'):
         cfg['activity']['type'] = 2
-    elif(arg == 'watching'):
+    elif(type == 'watching'):
         cfg['activity']['type'] = 3
-    elif(arg == 'custom'):
+    elif(type == 'custom'):
         cfg['activity']['type'] = 4
-    elif(arg == 'competing'):
+    elif(type == 'competing'):
         cfg['activity']['type'] = 5
-    elif(arg == 'unknown'):
+    elif(type == 'unknown'):
         cfg['activity']['type'] = -1
     else:
         await notify.error(ctx, 'Invalid Activity Type')

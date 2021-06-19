@@ -3,9 +3,9 @@ from app.vars.client import client
 from app.helpers import delete, notify
 
 @client.command()
-async def prefix(ctx, arg):
+async def prefix(ctx, prefix):
     await delete.byContext(ctx)
-    client.command_prefix = arg
-    cfg["prefix"] = arg
+    client.command_prefix = prefix
+    cfg["prefix"] = prefix
     save(cfg)
     await notify.success(ctx, f'The prefix has been changed to {cfg["prefix"]} successfully')

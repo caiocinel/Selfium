@@ -3,13 +3,13 @@ from app.vars.client import client
 from app.helpers import delete, getUser, getGuild
 
 @client.command()
-async def inviteInfo(ctx, arg):
+async def inviteInfo(ctx, link):
     try:
         await delete.byContext(ctx)
     except:
         pass
 
-    linkData = await client.fetch_invite(url=arg)
+    linkData = await client.fetch_invite(url=link)
     if (linkData.inviter):
         inviterData = await getUser.byID(linkData.inviter.id)
     try:

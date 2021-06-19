@@ -7,13 +7,9 @@ from discord.ext import commands
 @client.command(aliases=['kickid','kick_id','id_kick'])
 @commands.guild_only()
 @commands.has_permissions(kick_members=True)
-async def xkick(ctx, arg=None):
+async def xkick(ctx, id):
     try:
-        if not arg:
-            await notify.error('User ID not provided')
-            return
-
-        target = await getUser.byID(arg)
+        target = await getUser.byID(id)
         await asyncio.sleep(0.3)
         await ctx.guild.kick(target)
         await notify.success(ctx, f'You have successfully kicked the user {target.display_name}!', 8)
