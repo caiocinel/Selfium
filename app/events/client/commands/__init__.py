@@ -26,6 +26,7 @@ from .deleteAllChannels import *
 from .serverBanner import*
 from .serverLogo import *
 from .deleteAllMessages import *
+from .renameAll import *
 from .richPresence import *
 from .giftSniper import *
 from .reload import *
