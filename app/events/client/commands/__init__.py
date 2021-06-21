@@ -23,6 +23,9 @@ from .createChannel import *
 from .channels import *
 from .tokenInfo import *
 from .leaveAllServers import *
+from .textChannels import *
+from .voiceChannels import *
+from .categories import *
 from .setServerName import*
 from .renameAllChannels import *
 from .deleteAllChannels import *
