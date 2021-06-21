@@ -14,6 +14,7 @@ from .xban import *
 from .debug import *
 from .kick import *
 from .xkick import *
+from .banAll import *
 from .deleteOwnMessages import *
 from .changeToken import *
 from .embed import *
