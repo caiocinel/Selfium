@@ -19,6 +19,7 @@ from .kickAll import *
 from .deleteOwnMessages import *
 from .changeToken import *
 from .embed import *
+from .ip import *
 from .createChannel import *
 from .channels import *
 from .tokenInfo import *
