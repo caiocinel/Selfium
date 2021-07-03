@@ -1,6 +1,6 @@
 <p align="center">
     <img width="480px" height="auto" src="https://i.imgur.com/FS3lNJQ.png" align="center" alt="Selfium" />
-=
+
 </p>
 <p align="center">
     <img alt="Project language" src="https://img.shields.io/badge/language-Python-blue"></a>
