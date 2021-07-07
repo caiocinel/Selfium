@@ -7,7 +7,7 @@ from app.helpers import notify
 async def userInfo(ctx, Member: discord.Member = None):
 
     if not (Member):
-        await notify.error(ctx, 'No used has passed')
+        await notify.error(ctx, 'No user has passed')
         return
 
     try:
