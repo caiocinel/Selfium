@@ -9,5 +9,5 @@ async def byMember(member):
     return await byID(targetId)
 
 async def byID(id):
-    target = await client.fetch_user(int(id))
+    target = await client.fetch_user_profile(int(id))
     return target
