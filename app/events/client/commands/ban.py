@@ -2,12 +2,13 @@ import discord
 import asyncio
 from discord.ext import commands
 from app.vars.client import client
-from app.helpers import notify
+from app.helpers import notify, delete
 
 @client.command()
 @commands.guild_only()
 @commands.has_permissions(ban_members=True)
 async def ban(ctx, Member: commands.Greedy[discord.Member]=None):
+    delete.byContext(ctx)
     if not Member: await notify.error(ctx,'No users were informed'); return
     try:
         for t in range(len(Member)):
