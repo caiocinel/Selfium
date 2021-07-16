@@ -20,20 +20,20 @@ async def inviteInfo(ctx, link):
     embed = discord.Embed(title="Invite information", colour=discord.Color.purple())
     embed.set_thumbnail(url=guildData.icon_url)
     fields = [
-        ("ID", f"```{guildData.id}```", True),
-        ("Name::", f"```{guildData.name}```", True),
-        ("Description", f"```{guildData.description}```", True),
-        ("Created in:", f'```{guildData.created_at.strftime("%d/%m/%Y")}```', True),
-        ("Member Count:", f"```{int(linkData.approximate_member_count)}```", True), 
-        ("Link", f"```{linkData.url}```", True),
-        ("\u200b", "\u200b", True),
+        ("ID", f"```{guildData.id}```"),
+        ("Name::", f"```{guildData.name}```"),
+        ("Description", f"```{guildData.description}```"),
+        ("Created in:", f'```{guildData.created_at.strftime("%d/%m/%Y")}```'),
+        ("Member Count:", f"```{int(linkData.approximate_member_count)}```"), 
+        ("Link", f"```{linkData.url}```"),
+        ("\u200b", "\u200b"),
     ]
-    for name, value, inline in fields:
-        embed.add_field(name=name, value=value, inline=inline)
+    for name, value in fields:
+        embed.add_field(name=name, value=value, inline=False)
         
     if (linkData.inviter):
-        embed.add_field(name="Inviter ID:", value=f"```{inviterData.id}```", inline=True)
-        embed.add_field(name="Inviter:", value=f"```{inviterData.name + '#' + inviterData.discriminator}```", inline=True)
+        embed.add_field(name="Inviter ID:", value=f"```{inviterData.user.id}```")
+        embed.add_field(name="Inviter:", value=f"```{inviterData.user.name + '#' + inviterData.user.discriminator}```")
 
     embed.set_footer(text='Selfium (◔‿◔)')
     await ctx.send(embed=embed)
