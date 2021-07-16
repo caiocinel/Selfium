@@ -14,5 +14,7 @@ async def deleteAllMessages(ctx):
             await message.delete()
             await asyncio.sleep(0.33)
         except:
-            pass         
+            pass
+        else:
+            await notify.success(ctx,'All messages were deleted successfully')         
         
