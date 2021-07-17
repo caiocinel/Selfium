@@ -51,7 +51,6 @@ async def setPresenceState(ctx, *, state):
 async def setPresenceDetails(ctx, *, details):
     cfg['activity']['details'] = details
     await updatePresence(ctx)
-    discord.ActivityType
 
 @client.command()
 async def setPresenceURL(ctx, *, url):
@@ -59,11 +58,9 @@ async def setPresenceURL(ctx, *, url):
     if(cfg['activity']['type']) != 1:
         await notify.alert(ctx,'Streaming will only be displayed if presence is set to "Streaming"')
     await updatePresence(ctx)
-    discord.ActivityType
 
 @client.command()
 async def setPresenceType(ctx, *, type: str.lower):
-    type.upper()
     if(type == 'playing'):
         cfg['activity']['type'] = 0
     elif(type == 'streaming'):
@@ -80,5 +77,6 @@ async def setPresenceType(ctx, *, type: str.lower):
         cfg['activity']['type'] = -1
     else:
         await notify.error(ctx, 'Invalid Activity Type')
+        await delete.byContext(ctx)
         return
     await updatePresence(ctx)
