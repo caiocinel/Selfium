@@ -3,5 +3,9 @@ from app.helpers import notify, delete
 
 @client.event
 async def on_command_error(ctx, error):
-    await delete.byContext(ctx)
-    await notify.error(ctx, error)
+    try:
+        await delete.byContext(ctx)
+        await notify.error(ctx, error)
+    except:
+        pass
+
