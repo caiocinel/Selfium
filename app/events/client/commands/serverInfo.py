@@ -10,7 +10,7 @@ async def serverInfo(ctx):
         embed = discord.Embed(title="Server information", colour=discord.Color.purple())
         embed.set_thumbnail(url=ctx.guild.icon_url)
         userData = await getUser.byID(ctx.guild.owner_id)
-        userName = f"{userData.display_name}#{userData.discriminator}"
+        userName = f"{userData.user.display_name}#{userData.user.discriminator}"
         fields = [
             ("ID", f"```{ctx.guild.id}```", True),
             ("Owner::", f"```{userName}```", True),
