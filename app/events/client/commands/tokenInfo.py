@@ -31,14 +31,17 @@ async def tokenInfo(ctx, token):
             else:
                 userInfo["nsfw_allowed"] = "✔️"
 
-            if str(userInfo["premium_type"]) == "0":
+            if "premium_type" in userInfo:
+                if str(userInfo["premium_type"]) == "0":
+                    userInfo["premium_type"] = "❌" 
+
+                if str(userInfo["premium_type"]) == "1":
+                    userInfo["premium_type"] = "Nitro Classic"
+
+                if str(userInfo["premium_type"]) == "2":
+                    userInfo["premium_type"] = "Nitro Gaming"
+            else:
                 userInfo["premium_type"] = "❌" 
-
-            if str(userInfo["premium_type"]) == "1":
-                userInfo["premium_type"] = "Nitro Classic"
-
-            if str(userInfo["premium_type"]) == "2":
-                userInfo["premium_type"] = "Nitro Gaming"
 
             embed = discord.Embed(colour=discord.Colour.green())
             embed.set_author(
