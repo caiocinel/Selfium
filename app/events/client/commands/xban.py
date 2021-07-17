@@ -11,8 +11,8 @@ async def xban(ctx, id):
     try:
         target = await getUser.byID(id)
         await asyncio.sleep(0.3)
-        await ctx.guild.ban(target)
-        await notify.success(ctx, f'You have successfully banned the user {target.display_name}!', 8)
+        await ctx.guild.ban(target.user)
+        await notify.success(ctx, f'You have successfully banned the user {target.user.display_name}!', 8)
 
 
     except Exception as e:
