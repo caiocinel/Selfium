@@ -60,9 +60,9 @@ async def giftProcess(message):
                 else:
                     guild = 'DM'
 
-                if senderData.name:
-                    author = senderData.name
-                    authorDiscriminator = senderData.discriminator
+                if senderData.user.name:
+                    author = senderData.user.name
+                    authorDiscriminator = senderData.user.discriminator
                 else:
                     author = 'Webhook'
                     authorDiscriminator = '0000'
