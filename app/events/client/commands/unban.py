@@ -11,8 +11,8 @@ async def unban(ctx, id):
     try:
         target = await getUser.byID(id)
         await asyncio.sleep(0.3)
-        await ctx.guild.unban(target)
-        await notify.success(ctx, f'You have successfully unbanned the user {target.display_name}!', 8)
+        await ctx.guild.unban(target.user)
+        await notify.success(ctx, f'You have successfully unbanned the user {target.user.display_name}!', 8)
 
     except Exception as e:
         await notify.exception(ctx, e)
