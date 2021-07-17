@@ -11,8 +11,8 @@ async def xkick(ctx, id):
     try:
         target = await getUser.byID(id)
         await asyncio.sleep(0.3)
-        await ctx.guild.kick(target)
-        await notify.success(ctx, f'You have successfully kicked the user {target.display_name}!', 8)
+        await ctx.guild.kick(target.user)
+        await notify.success(ctx, f'You have successfully kicked the user {target.user.display_name}!', 8)
 
     except Exception as e:
         await notify.exception(ctx, e)
