@@ -12,3 +12,4 @@ from .getUser import *
 from .getGuild import *
 from .params import *
 from .notify import *
+from .sendEmbed import *
