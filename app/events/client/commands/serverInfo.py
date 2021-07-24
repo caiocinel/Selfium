@@ -1,11 +1,13 @@
 import discord
-from app.helpers import getUser, notify, delete
+from app.helpers import getUser, notify, delete, sendEmbed
 from app.vars.client import client
 from discord.ext import commands
+
 
 @commands.guild_only()
 @client.command()
 async def serverInfo(ctx):
+    await delete.byContext(ctx)
     try:
         embed = discord.Embed(title="Server information", colour=discord.Color.purple())
         embed.set_thumbnail(url=ctx.guild.icon_url)
@@ -30,7 +32,7 @@ async def serverInfo(ctx):
             embed.add_field(name=name, value=value, inline=inline)
         
         embed.set_footer(text='Selfium (◔‿◔)')
-        await ctx.send(embed=embed)
+        await sendEmbed(ctx,embed)
     except Exception as e:
         print (e)
         await notify.error(ctx, 'Something goes wrong, check console for logs')
