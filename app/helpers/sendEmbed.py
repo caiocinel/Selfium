@@ -9,6 +9,9 @@ async def sendEmbed(ctx,embed):
         if fields.name != '\u200b':
             message += '**' + fields.name + '**: ' + fields.value + '\n'
 
+    if embed.image.url:
+        message += embed.image.url + '\n'
+
     message += '=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=\n'
 
     if embed.footer.text:
