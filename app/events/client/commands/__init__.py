@@ -13,6 +13,7 @@ from .ban import *
 from .xban import *
 from .debug import *
 from .kick import *
+from .muteAllServers import *
 from .xkick import *
 from .banAll import *
 from .kickAll import *
