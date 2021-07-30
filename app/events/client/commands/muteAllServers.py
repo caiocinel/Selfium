@@ -29,3 +29,5 @@ async def muteAllServers(ctx):
         await Message.edit(embed=Embed)
     else:
         await Message.edit(f"> Total number of mutated servers: **{int(muted_servers)}** / **{len(client.guilds)}**.\n> Current Status: **All done!**")
+
+    return
