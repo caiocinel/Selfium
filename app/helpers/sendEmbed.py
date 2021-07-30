@@ -1,8 +1,8 @@
 
 async def sendEmbed(ctx,embed):
     if ctx.channel.permissions_for(ctx.author).embed_links:
-        await ctx.send(embed=embed)
-        return
+        message = await ctx.send(embed=embed)
+        return message
 
     message = '=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=\n'
     for fields in embed.fields:
@@ -19,4 +19,5 @@ async def sendEmbed(ctx,embed):
 
     message = message.replace('`','')
 
-    await ctx.send(message)
+    message = await ctx.send(message)
+    return message
