@@ -18,7 +18,7 @@ async def deleteMyMessages(ctx, amount):
         else:
             async for message in ctx.message.channel.history():
                 try:
-                    if (message and message.author == ctx.author and not message.content == ''):
+                    if (message and message.author == ctx.author):
                         await message.delete()
                         await asyncio.sleep(0.5)
                 except Exception as e:
