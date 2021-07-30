@@ -3,7 +3,7 @@ from app.vars.client import client
 from app.helpers import notify, delete
 
 #Delete number of messages from DiscordPy client (This function was partially done by Github Copilot)
-@client.command(aliases=['removemymessages', 'dmm', 'clearmymessage'])
+@client.command(aliases=['removemymessages', 'dmm', 'clearmymessage', 'dom'])
 async def deleteMyMessages(ctx, amount):
     await delete.byContext(ctx)
 
@@ -12,13 +12,16 @@ async def deleteMyMessages(ctx, amount):
         return
 
     try:
-        await ctx.message.channel.purge(limit=int(amount))
-        await notify.success(ctx, "Deleted {} messages from the chat".format(amount))
-    except:
+        if (ctx.guild):
+            await ctx.message.channel.purge(limit=int(amount))
+            await notify.success(ctx, "Deleted {} messages from the chat".format(amount))
+        else:
+            async for message in ctx.message.channel.history():
+                try:
+                    await message.delete()
+                    await asyncio.sleep(0.33)
+                except:
+                    pass
+            
+    except Exception as e:
         await notify.error(ctx, "Something goes wrong, try again!")
-
-    
-
-
-
-
