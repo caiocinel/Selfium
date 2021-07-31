@@ -1,4 +1,6 @@
 import asyncio
+
+from discord.message import Message
 from app.vars.client import client
 from app.helpers import notify, delete
 
@@ -11,6 +13,7 @@ async def deleteMyMessages(ctx, amount):
         await notify.error(ctx, 'Please enter a number greater than 0')
         return
 
+    MessageList = []
     try:
         if (ctx.guild):
             await ctx.message.channel.purge(limit=int(amount))
@@ -18,11 +21,13 @@ async def deleteMyMessages(ctx, amount):
         else:
             async for message in ctx.message.channel.history():
                 try:
-                    if (message and message.author == ctx.author):
-                        await message.delete()
-                        await asyncio.sleep(0.5)
+                    if len(MessageList) < int(amount) and message and message.author == ctx.author:
+                        MessageList.append(message)
                 except Exception as e:
                     pass
+        for message in MessageList:
+            await message.delete()
+            await asyncio.sleep(0.5)
             
     except Exception as e:
         await notify.error(ctx, "Something goes wrong, try again!")
