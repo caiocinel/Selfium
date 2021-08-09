@@ -1,47 +1,80 @@
-  
+from logging import exception
 import discord
-import time
-from app.helpers import delete
-from app.filesystem import cfg
+import asyncio
+
+loop = asyncio.get_event_loop()
+class Notify:    
+
+    def __init__(self, **kwargs):
+        self.name = kwargs.get('name', 'Command')
+        self.ctx  = kwargs.get('ctx')
+        self.color = kwargs.get('color', discord.Colour.dark_blue()) 
+        self.__canEmbed()
 
 
-async def success(ctx, message, count : int = cfg['notifyTime']):
-    try:
-        embed = discord.Embed(description=f'```{message}```', colour=discord.Colour.green())
-        embedMessage = await ctx.send(embed=embed)
-        time.sleep(count)
-    except:
-        pass
-    finally:
-        if(embedMessage):
-            await delete.byMessage(embedMessage)
+    def success(self, **kwargs):
+        self.name = kwargs.get('title', self.name)
+        self.content = kwargs.get('content','Command Successfully Executed!')      
+        self.color = kwargs.get('color', discord.Colour.green())
+        self.__embedHandler()
 
-async def error(ctx, message, count : int = cfg['notifyTime']):
-    try:
-        embed = discord.Embed(description=f'```{message}```', colour=discord.Colour.dark_red())
-        embedMessage = await ctx.send(embed=embed)
-        time.sleep(count)
-    except:
-        pass
-    finally:
-        if(embedMessage):
-            await delete.byMessage(embedMessage)
-               
-async def alert(ctx, message, count : int = cfg['notifyTime']):
-    try:
-        embed = discord.Embed(description=f'{message}', colour=discord.Colour.gold())
-        embedMessage = await ctx.send(embed=embed)
-        time.sleep(count)
-    finally:
-        if(embedMessage):
-            await delete.byMessage(embedMessage)
+    def error(self, **kwargs):
+        self.name = kwargs.get('title', self.name)
+        self.content = kwargs.get('content','Oops, there was a problem')      
+        self.color = kwargs.get('color', discord.Colour.red())
+        self.__embedHandler()
 
-async def plain(ctx, message, title=None):
-    embed = discord.Embed()
-    if(title):
-        embed.title = title
-    embed.description = message
-    await ctx.send(embed=embed)
+    def alert(self, **kwargs):
+        self.name = kwargs.get('title', self.name)
+        self.content = kwargs.get('content','Oops, something unexpected might have happened')      
+        self.color = kwargs.get('color', discord.Colour.gold())
+        self.__embedHandler()
 
-async def exception(ctx, e = 'Something went wrong, try again!'):
-    await error(ctx, e, 5)
+    def exception(self, content):
+        self.error(content=content)
+
+    def __canEmbed(self):
+        if self.ctx.channel.permissions_for(self.ctx.author).embed_links:
+            return True
+
+    def prepair(self):
+        self.content = 'Processing Command...'
+        self.__embedHandler()
+        
+    def __embedHandler(self):
+        if self.__canEmbed() == True:
+            loop.create_task(self.__sendEmbed())
+        else:
+            loop.create_task(self.__sendMessage())
+
+    async def __sendEmbed(self):
+        await self.ctx.message.edit(embed = discord.Embed(title=self.name, description=self.content,color=self.color), content = '')
+
+    async def __sendMessage(self):
+        await self.ctx.message.edit(content=f'**{self.name}**' + '\n' + self.content)
+
+
+    #class Types:
+    #     @classmethod
+    #     def notify(cls):
+    #         ''' Display standard Selfium notifications such as successfully executed commands, errors or warnings. '''
+    #         return cls(0)
+
+    #     @classmethod
+    #     def preview(cls):
+    #         ''' View real-time progression of requested actions '''
+    #         return cls(1)
+
+    #     @classmethod
+    #     def percentage(cls):    
+    #         ''' Show the percentage progression of requested actions. '''
+    #         return cls(2)
+
+
+
+
+
+
+
+
+
