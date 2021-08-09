@@ -1,11 +1,11 @@
 from app.vars.client import client
-from app.helpers import notify, delete
+from app.helpers import Notify, delete
 
 @client.event
 async def on_command_error(ctx, error):
     try:
-        await delete.byContext(ctx)
-        await notify.error(ctx, error)
+        notify = Notify(ctx=ctx, name="Exception")
+        notify.exception(content=error)
     except:
         pass
 
