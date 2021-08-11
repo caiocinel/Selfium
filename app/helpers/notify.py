@@ -33,8 +33,17 @@ class Notify:
         self.color = kwargs.get('color', discord.Colour.gold())
         self.__embedHandler()
 
+    def fields(self, **kwargs):
+        self.field = kwargs.get('fields', None)
+        self.__set_fields()
+
     def exception(self, content):
         self.error(content=content)
+
+    def __set_fields(self):
+        for field in self.fields:
+            self.content += f'**{field.name}**: {field.value} ' + '\n'
+        self.__embedHandler()
 
     def __canEmbed(self):
         if self.ctx.channel.permissions_for(self.ctx.author).embed_links:
@@ -50,4 +59,7 @@ class Notify:
         await self.ctx.message.edit(embed = discord.Embed(title=self.name, description=self.content,color=self.color), content = '')
 
     async def __sendMessage(self):
-        await self.ctx.message.edit(content=f'**{self.name}**' + '\n' + self.content)
+
+#                await self.ctx.message.edit(content=f'**{self.name}**' + '\n' + self.content)
+#            else:
+        await self.ctx.message.edit(content=self.content)
