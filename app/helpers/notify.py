@@ -11,6 +11,9 @@ class Notify:
         self.color = kwargs.get('color', discord.Colour.dark_blue()) 
         self.__canEmbed()
 
+    def prepair(self):
+        self.content = 'Processing Command...'
+        self.__embedHandler()
 
     def success(self, **kwargs):
         self.name = kwargs.get('title', self.name)
@@ -36,10 +39,6 @@ class Notify:
     def __canEmbed(self):
         if self.ctx.channel.permissions_for(self.ctx.author).embed_links:
             return True
-
-    def prepair(self):
-        self.content = 'Processing Command...'
-        self.__embedHandler()
         
     def __embedHandler(self):
         if self.__canEmbed() == True:
@@ -52,4 +51,3 @@ class Notify:
 
     async def __sendMessage(self):
         await self.ctx.message.edit(content=f'**{self.name}**' + '\n' + self.content)
-
