@@ -53,28 +53,3 @@ class Notify:
     async def __sendMessage(self):
         await self.ctx.message.edit(content=f'**{self.name}**' + '\n' + self.content)
 
-
-    #class Types:
-    #     @classmethod
-    #     def notify(cls):
-    #         ''' Display standard Selfium notifications such as successfully executed commands, errors or warnings. '''
-    #         return cls(0)
-
-    #     @classmethod
-    #     def preview(cls):
-    #         ''' View real-time progression of requested actions '''
-    #         return cls(1)
-
-    #     @classmethod
-    #     def percentage(cls):    
-    #         ''' Show the percentage progression of requested actions. '''
-    #         return cls(2)
-
-
-
-
-
-
-
-
-
