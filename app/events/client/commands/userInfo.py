@@ -6,7 +6,7 @@ from app.helpers import Notify, delete
 @client.command()
 async def userInfo(ctx, Member: discord.Member = None):
     notify = Notify(ctx=ctx, title="User Info")
-
+    notify.prepair()
     if not (Member):
         await notify.error(content='No user has passed')
         return

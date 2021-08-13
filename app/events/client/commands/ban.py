@@ -8,7 +8,7 @@ from app.helpers import Notify, delete
 @commands.guild_only()
 #@commands.has_permissions(ban_members=True)
 async def ban(ctx, Member: commands.Greedy[discord.Member] = None):
-    notify = Notify(ctx=ctx,name='Banning member...')
+    notify = Notify(ctx=ctx,title='Banning member...')
     notify.prepair()            
     if Member is None: 
         notify.error(content='No users were informed')

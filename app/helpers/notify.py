@@ -6,7 +6,7 @@ loop = asyncio.get_event_loop()
 class Notify:    
 
     def __init__(self, **kwargs):
-        self.name = kwargs.get('name', 'Command')
+        self.name = kwargs.get('title', 'Command')
         self.ctx  = kwargs.get('ctx')
         self.color = kwargs.get('color', discord.Colour.dark_blue()) 
         self.__canEmbed()
@@ -56,10 +56,17 @@ class Notify:
             loop.create_task(self.__sendMessage())
 
     async def __sendEmbed(self):
-        await self.ctx.message.edit(embed = discord.Embed(title=self.name, description=self.content,color=self.color), content = '')
+
+        if self.ctx is None:
+            return
+    
+        try:
+            await self.ctx.message.edit(embed = discord.Embed(title=self.name, description=self.content,color=self.color), content = '')
+        except:
+            pass
 
     async def __sendMessage(self):
-
-#                await self.ctx.message.edit(content=f'**{self.name}**' + '\n' + self.content)
-#            else:
-        await self.ctx.message.edit(content=self.content)
+        try:
+            await self.ctx.message.edit(content=f'***{self.name}***' + '\n' + self.content)
+        except:
+            pass
