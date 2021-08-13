@@ -45,3 +45,7 @@ async def plain(ctx, message, title=None):
 
 async def exception(ctx, e = 'Something went wrong, try again!'):
     await error(ctx, e, 5)
+
+def ConsoleLog(LogMessage):
+    if cfg['consoleLogs']:
+        return print(LogMessage)
