@@ -3,7 +3,6 @@ import asyncio
 from discord.ext import commands
 from app.vars.client import client
 from app.helpers import notify
-from app.helpers.notify import ConsoleLog
 
 @client.command()
 @commands.guild_only()
@@ -15,12 +14,12 @@ async def renameAll(ctx, *, nick: str):
                 nick=nick
             )
 
-            ConsoleLog(
+            notify.ConsoleLog(
                 f'[LOG]: {member.name} changed to {member.display_name}'
             )
 
         except Exception as e:
-            ConsoleLog(
+            notify.ConsoleLog(
                 f'[ERROR]: {e.text}'
             )
     else:
