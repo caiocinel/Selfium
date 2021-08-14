@@ -2,6 +2,8 @@ from logging import exception
 import discord
 import asyncio
 
+from discord.embeds import EmptyEmbed
+
 loop = asyncio.get_event_loop()
 class Notify:    
 
@@ -9,6 +11,7 @@ class Notify:
         self.name = kwargs.get('title', 'Command')
         self.ctx  = kwargs.get('ctx')
         self.color = kwargs.get('color', discord.Colour.dark_blue()) 
+        self.embed = discord.Embed()
         self.__canEmbed()
 
     def prepair(self):
@@ -41,8 +44,10 @@ class Notify:
         self.error(content=content)
 
     def __set_fields(self):
-        for field in self.fields:
-            self.content += f'**{field.name}**: {field.value} ' + '\n'
+        self.content = ''
+        if (self.__canEmbed()) != True:
+            for name, value, inline in self.field:
+                self.content += f'**{name}** {value} ' + '\n'
         self.__embedHandler()
 
     def __canEmbed(self):
@@ -56,17 +61,15 @@ class Notify:
             loop.create_task(self.__sendMessage())
 
     async def __sendEmbed(self):
-
-        if self.ctx is None:
-            return
-    
-        try:
-            await self.ctx.message.edit(embed = discord.Embed(title=self.name, description=self.content,color=self.color), content = '')
-        except:
-            pass
+        self.embed.title = self.name
+        self.embed.description = self.content
+        self.embed.color = self.color
+        self.embed.clear_fields()
+        if hasattr(self,'field'):
+            for name, value, inline in self.field:
+                self.embed.add_field(name=name, value=value, inline=inline)
+        await self.ctx.message.edit(embed = self.embed, content = '')
 
     async def __sendMessage(self):
-        try:
-            await self.ctx.message.edit(content=f'***{self.name}***' + '\n' + self.content)
-        except:
-            pass
+        await self.ctx.message.edit(content=f'***{self.name}***' + '\n' + self.content.replace('`',''))
+        
