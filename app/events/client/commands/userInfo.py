@@ -8,7 +8,7 @@ async def userInfo(ctx, Member: discord.Member = None):
     notify = Notify(ctx=ctx, title="User Info")
     notify.prepair()
     if not (Member):
-        await notify.error(content='No user has passed')
+        notify.error(content='No user has passed')
         return
 
     try:
@@ -30,7 +30,6 @@ async def userInfo(ctx, Member: discord.Member = None):
                     ("Created In:", f'```{Member.created_at.strftime("%d/%m/%Y")}```', True),
                     ("Joined In:", f'```{Member.joined_at.strftime("%d/%m/%Y")}```', True),
                     ("Booster?", f'```{Booster}```', True)]
-        await notify.fields(fields=fields)
+        notify.fields(fields=fields)
     except Exception as e:
-        print(e)
-        await notify.error(ctx, e)
+        notify.error(content=e)
