@@ -7,7 +7,7 @@ from discord.ext import commands
 @client.command(aliases=['banid','ban_id','id_ban'])
 @commands.guild_only()
 @commands.has_permissions(ban_members=True)
-async def xban(ctx, id):
+async def banbyid(ctx, id):
     try:
         target = await getUser.byID(id)
         await asyncio.sleep(0.3)
