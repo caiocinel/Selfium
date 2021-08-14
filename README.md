@@ -71,8 +71,8 @@ We are still taking the initial steps in the development of this project, new fe
 |[prefix](https://github.com/caiocinel/Selfium/blob/main/app/events/client/commands/prefix.py)   |Change Prefix used in Commands|
 |[unban](https://github.com/caiocinel/Selfium/blob/main/app/events/client/commands/xkick.py)   |Unban user from Guild using ID|
 |[voiceChannels](https://github.com/caiocinel/Selfium/blob/main/app/events/client/commands/voiceChannels.py)   |Displays all voice channels on the server, including those you cannot see|
-|[xban](https://github.com/caiocinel/Selfium/blob/main/app/events/client/commands/xban.py)    |Ban user from Guild using ID|
-|[xkick](https://github.com/caiocinel/Selfium/blob/main/app/events/client/commands/xkick.py)   |Kick user from Guild using ID|
+|[banbyid](https://github.com/caiocinel/Selfium/blob/main/app/events/client/commands/xban.py)    |Ban user from Guild using ID|
+|[kickbyid](https://github.com/caiocinel/Selfium/blob/main/app/events/client/commands/xkick.py)   |Kick user from Guild using ID|
 
 
 ---------------------------------------------------------------------------------------
