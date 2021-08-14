@@ -115,3 +115,4 @@ dmypy.json
 config.json
 .vscode/settings.json
 discord/
+data/divList.json

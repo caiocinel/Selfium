@@ -3,6 +3,7 @@
   "prefix": "",
   "notifyTime": 3,
   "msgLogger": 0,
+  "consoleLogs": false,
   "sniperToken": {
     "enabled": false,
     "token": ""

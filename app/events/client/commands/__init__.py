@@ -10,11 +10,11 @@ All Client Command Files used in Selfium project;
 
 from .avatar import *
 from .ban import *
-from .xban import *
+from .banbyid import *
 from .debug import *
 from .kick import *
 from .muteAllServers import *
-from .xkick import *
+from .kickbyid import *
 from .banAll import *
 from .kickAll import *
 from .deleteOwnMessages import *
