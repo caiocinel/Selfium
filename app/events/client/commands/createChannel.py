@@ -10,7 +10,7 @@ from app.filesystem import cfg
 @commands.guild_only()
 @commands.has_permissions(manage_channels=True)
 async def createChannel(ctx, *, args = ''):
-    await delete.byContext(ctx)
+    await ctx.message.delete()
     args = params.split(args)
     if len(args) > 1:
         try:

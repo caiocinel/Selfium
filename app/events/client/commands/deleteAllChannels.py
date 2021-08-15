@@ -8,7 +8,7 @@ from app.helpers import notify, delete
 @commands.guild_only()
 @commands.has_permissions(manage_channels=True)
 async def deleteAllChannels(ctx, *, channelType: str.lower = ''):
-    await delete.byContext(ctx)
+    await ctx.message.delete()
     
     if(channelType == 'text'):
         type = ctx.guild.text_channels

@@ -7,7 +7,7 @@ from app.helpers import delete, notify
 @client.command()
 async def reload(ctx):
     try:
-        await delete.byContext(ctx)
+        await ctx.message.delete()
         await notify.success(ctx, 'Selfium will reload, please wait...', None)
         os.execv(sys.executable, ["python"] + sys.argv)
     except Exception as e:

@@ -8,7 +8,7 @@ from app.helpers import notify, delete, params
 @commands.guild_only()
 @commands.has_permissions(manage_channels=True)
 async def renameAllChannels(ctx, *, args = ''):
-    await delete.byContext(ctx)
+    await ctx.message.delete()
     args = params.split(args)
     if len(args) > 1:
         channelType = str.lower(args[1])

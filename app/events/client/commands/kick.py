@@ -8,7 +8,7 @@ from discord.ext import commands
 @commands.guild_only()
 @commands.has_permissions(kick_members=True)
 async def kick(ctx, Member: commands.Greedy[discord.Member]=None):
-    await delete.byContext(ctx)
+    await ctx.message.delete()
     try:
         for t in range(len(Member)):
             if not Member[t] or Member[t].id == client.user.id: await notify.error(ctx,'No users were informed');return            

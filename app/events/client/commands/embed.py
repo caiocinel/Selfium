@@ -4,7 +4,7 @@ from app.filesystem import cfg
 
 @client.command(aliases=['embed'])
 async def simpleEmbed(ctx, *, args):
-    await delete.byContext(ctx)
+    await ctx.message.delete()
     args = params.split(args)
     if not len(args) > 2:
         if len(args) == 2:

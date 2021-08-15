@@ -4,7 +4,7 @@ from app.helpers import delete, notify
 
 @client.command()
 async def prefix(ctx, prefix):
-    await delete.byContext(ctx)
+    await ctx.message.delete()
     client.command_prefix = prefix
     cfg["prefix"] = prefix
     save(cfg)
