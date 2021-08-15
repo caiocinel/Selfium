@@ -37,11 +37,27 @@ class Notify:
         self.__embedHandler()
 
     def fields(self, **kwargs):
+        self.name = kwargs.get('title', self.name)
+        self.color = kwargs.get('color', discord.Colour.blue())
         self.field = kwargs.get('fields', None)
         self.__set_fields()
 
     def exception(self, content):
         self.error(content=content)
+
+    def image(self, **kwargs):
+        self.name = kwargs.get('title', self.name)
+        self.imageURL = kwargs.get('image', None)
+        self.color = kwargs.get('color', discord.Colour.purple())
+        self.__set_image()
+
+
+    def __set_image(self):
+        self.content = ''
+        if (self.__canEmbed()) != True:
+            self.content = f'{self.imageURL}'
+
+        self.__embedHandler()
 
     def __set_fields(self):
         self.content = ''
@@ -65,9 +81,14 @@ class Notify:
         self.embed.description = self.content
         self.embed.color = self.color
         self.embed.clear_fields()
+
         if hasattr(self,'field'):
             for name, value, inline in self.field:
                 self.embed.add_field(name=name, value=value, inline=inline)
+        
+        if hasattr(self,'imageURL'):
+            self.embed.set_image(url=self.imageURL)
+
         await self.ctx.message.edit(embed = self.embed, content = '')
 
     async def __sendMessage(self):
