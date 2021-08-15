@@ -14,7 +14,7 @@ async def success(ctx, message, count : int = cfg['notifyTime']):
         pass
     finally:
         if(embedMessage):
-            await delete.byMessage(embedMessage)
+            await embedMessage.delete()
 
 async def error(ctx, message, count : int = cfg['notifyTime']):
     try:
@@ -25,7 +25,7 @@ async def error(ctx, message, count : int = cfg['notifyTime']):
         pass
     finally:
         if(embedMessage):
-            await delete.byMessage(embedMessage)
+            await embedMessage.delete()
                
 async def alert(ctx, message, count : int = cfg['notifyTime']):
     try:
@@ -34,7 +34,7 @@ async def alert(ctx, message, count : int = cfg['notifyTime']):
         time.sleep(count)
     finally:
         if(embedMessage):
-            await delete.byMessage(embedMessage)
+            await embedMessage.delete()
 
 async def plain(ctx, message, title=None):
     embed = discord.Embed()
