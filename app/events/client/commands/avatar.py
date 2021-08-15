@@ -5,7 +5,7 @@ from app.helpers import delete, sendEmbed
 
 @client.command(aliases=['profilepicture'])
 async def avatar(ctx, Member: commands.Greedy[discord.Member]):
-    await delete.byContext(ctx)
+    await ctx.message.delete()
     for t in range(len(Member)):
         embed = discord.Embed(colour=discord.Colour.green())
         embed.set_author(name=f"🖼️ Here's {Member[t].display_name} profile picture", url=f"{Member[t].avatar_url.BASE + Member[t].avatar_url._url}")

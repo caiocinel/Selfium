@@ -27,7 +27,7 @@ async def updatePresence(ctx=None):
         url=cfg['activity']['url']
     )
     if(ctx):
-        await delete.byContext(ctx)
+        await ctx.message.delete()
     fileSystem.save(cfg)
     if(cfg['activity']['enabled']):
         await client.change_presence(activity=discord.Activity(**activityData))
@@ -77,6 +77,6 @@ async def setPresenceType(ctx, *, type: str.lower):
         cfg['activity']['type'] = -1
     else:
         await notify.error(ctx, 'Invalid Activity Type')
-        await delete.byContext(ctx)
+        await ctx.message.delete()
         return
     await updatePresence(ctx)

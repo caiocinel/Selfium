@@ -6,7 +6,7 @@ from app.vars import client
 @commands.guild_only()
 @client.command(aliases=["text_channels"])
 async def textChannels(ctx):
-    await delete.byContext(ctx)
+    await ctx.message.delete()
     try:
         embed = discord.Embed(title="Text Channels", colour=discord.Color.purple())
         embed.set_thumbnail(url=ctx.guild.icon_url)

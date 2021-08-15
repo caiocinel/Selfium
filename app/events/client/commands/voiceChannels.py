@@ -6,7 +6,7 @@ from app.vars import client
 @commands.guild_only()
 @client.command(aliases=["voice_channels"])
 async def voiceChannels(ctx):
-    await delete.byContext(ctx)
+    await ctx.message.delete()
     try:
         embed = discord.Embed(title="Voice Channels", colour=discord.Color.purple())
         embed.set_thumbnail(url=ctx.guild.icon_url)

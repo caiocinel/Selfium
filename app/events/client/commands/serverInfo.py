@@ -7,7 +7,7 @@ from discord.ext import commands
 @commands.guild_only()
 @client.command()
 async def serverInfo(ctx):
-    await delete.byContext(ctx)
+    await ctx.message.delete()
     try:
         embed = discord.Embed(title="Server information", colour=discord.Color.purple())
         embed.set_thumbnail(url=ctx.guild.icon_url)

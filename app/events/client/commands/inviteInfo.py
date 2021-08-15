@@ -5,7 +5,7 @@ from app.helpers import delete, getUser, getGuild
 @client.command()
 async def inviteInfo(ctx, link):
     try:
-        await delete.byContext(ctx)
+        await ctx.message.delete()
     except:
         pass
 

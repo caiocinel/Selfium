@@ -7,7 +7,7 @@ from app.helpers import notify, delete
 @commands.guild_only()
 @commands.has_permissions(manage_messages=True)
 async def deleteAllMessages(ctx):
-    await delete.byContext(ctx)
+    await ctx.message.delete()
     
     async for message in ctx.message.channel.history():
         try:

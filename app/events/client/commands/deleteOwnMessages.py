@@ -4,7 +4,7 @@ from app.helpers import notify, delete, sendEmbed
 
 @client.command(aliases=['removemymessages', 'dmm', 'clearmymessage', 'dom'])
 async def deleteMyMessages(ctx, amount, status=True):
-    await delete.byContext(ctx)
+    await ctx.message.delete()
 
     DeletedCount = 0
     MessageList = []

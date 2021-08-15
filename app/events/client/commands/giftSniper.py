@@ -5,7 +5,7 @@ from app.helpers import notify, delete
     
 @client.command(aliases=['nitroSniper'])
 async def giftSniper(ctx):
-    await delete.byContext(ctx)
+    await ctx.message.delete()
     cfg['sniperToken']['enabled'] = not cfg['sniperToken']['enabled'] 
     save(cfg)
     if not token(cfg['sniperToken']['token']) and cfg['sniperToken']['enabled']:

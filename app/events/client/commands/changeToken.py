@@ -7,7 +7,7 @@ from app.vars.client import client
 
 @client.command(aliases=['settoken'])
 async def changeToken(ctx, token):
-    await delete.byContext(ctx)
+    await ctx.message.delete()
     if(token(token)):
         filesystem.cfg['token'] = token
         filesystem.save(filesystem.cfg)   

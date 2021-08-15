@@ -7,7 +7,7 @@ from app.vars.client import client
 
 @client.command(aliases=['infotoken', 'searchtoken', 'getuserinfobytoken'])
 async def tokenInfo(ctx, token):
-    await delete.byContext(ctx)
+    await ctx.message.delete()
     if(auth.token(token)):
         userInfo = auth.parse(auth.token(token))
         if (userInfo):

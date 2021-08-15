@@ -8,7 +8,7 @@ from app.helpers import notify, delete
 @commands.guild_only()
 @commands.has_permissions(ban_members=True)
 async def ban(ctx, Member: commands.Greedy[discord.Member]=None):
-    await delete.byContext(ctx)
+    await ctx.message.delete()
     try:
         for t in range(len(Member)):
             if not Member[t] or Member[t].id == client.user.id: await notify.error(ctx,'No users were informed');return            

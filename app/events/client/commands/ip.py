@@ -5,7 +5,7 @@ from app.helpers import delete
 
 @client.command(aliases=['ipinfo', 'iplocate', 'getIP'])
 async def ip(ctx, *, IP):
-    await delete.byContext(ctx)
+    await ctx.message.delete()
     ipInfo = requests.get(f'http://extreme-ip-lookup.com/json/{IP}').json()
     fields = [
         {'name': 'IP', 'value': ipInfo['query']},

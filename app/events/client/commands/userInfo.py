@@ -5,7 +5,7 @@ from app.helpers import notify, delete
 
 @client.command()
 async def userInfo(ctx, Member: discord.Member = None):
-    await delete.byContext(ctx)
+    await ctx.message.delete()
 
     if not (Member):
         await notify.error(ctx, 'No user has passed')
