@@ -16,5 +16,5 @@ async def deleteAllMessages(ctx):
         except:
             pass
     else:
-        await notify.success(content='All messages were deleted successfully')         
+        notify.success(content='All messages were deleted successfully')         
         
