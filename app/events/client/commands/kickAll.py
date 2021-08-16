@@ -1,22 +1,18 @@
 from discord.ext import commands
 from app.vars.client import client
-from app.helpers import notify
+from app.helpers import Notify
 
 @client.command()
 @commands.guild_only()
 @commands.has_permissions(kick_members=True)
 async def kickAll(ctx):
-    AllowList = []
+    notify = Notify(ctx=ctx, title='Kicking All Members...')
+    notify.prepair()
     for member in ctx.guild.members:
         if member.id != ctx.author.id:
             try:
-                if not(member.id in AllowList):
-                    await member.kick()
-                    notify.ConsoleLog(f'[{member.display_name}]: Has been kicked.')
-                else:
-                    notify.ConsoleLog(f'[{member.display_name}]: Has been skipped.')
-            except Exception as e:
-                notify.ConsoleLog(f'[Error]: {e.text}')
+                await member.kick() 
+            except:
                 pass
     else:
-        await notify.success(ctx,f'All members successfully kicked')
+        await notify.success(content=f'All members successfully kicked')
