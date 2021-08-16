@@ -92,5 +92,5 @@ class Notify:
         await self.ctx.message.edit(embed = self.embed, content = '')
 
     async def __sendMessage(self):
-        await self.ctx.message.edit(content=f'***{self.name}***' + '\n' + self.content.replace('`',''))
+        await self.ctx.message.edit(content=f'**{self.name}**' + '\n' + self.content.replace('`',''))
         
