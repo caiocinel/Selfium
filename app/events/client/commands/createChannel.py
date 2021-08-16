@@ -2,7 +2,7 @@ import asyncio
 from discord.utils import get
 from discord.ext import commands
 from app.vars.client import client
-from app.helpers import notify, delete, params
+from app.helpers import params, Notify
 from app.filesystem import cfg
 
 
@@ -10,7 +10,8 @@ from app.filesystem import cfg
 @commands.guild_only()
 @commands.has_permissions(manage_channels=True)
 async def createChannel(ctx, *, args = ''):
-    await ctx.message.delete()
+    notify = Notify(ctx=ctx, title='Creating Channel...')
+    notify.prepair()
     args = params.split(args)
     if len(args) > 1:
         try:
@@ -24,12 +25,12 @@ async def createChannel(ctx, *, args = ''):
             elif(channelType == 'category'):
                 await ctx.guild.create_category(args[1])
             else:
-                await notify.error(ctx, f'The type of channel you provide ({args[1]}) is not supported\n ')
+                notify.error(content=f'The type of channel you provide ({args[1]}) is not supported\n')
                 return
         finally:
-            await notify.success(ctx, f'The {args[0]} channel \'{args[1]}\' was created successfully')
+            notify.success(content=f'The {args[0]} channel \'{args[1]}\' was created successfully')
     else:
-        await notify.error(ctx, f'This command requires two parameters:\n {cfg["prefix"]}createChannel type;;name;;*category')
+        notify.error(content=f'This command requires two parameters:\n {cfg["prefix"]}createChannel type;;name;;*category')
 
 
 @client.command(aliases=['create_voice_channel'])
