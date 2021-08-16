@@ -1,18 +1,21 @@
 import asyncio, discord
 from app.vars.client import client
-from app.helpers import notify, delete, sendEmbed
+from app.helpers import Notify, sendEmbed
+
+## Require implement a new way to delete own messages and show notifications with less api requests
 
 @client.command(aliases=['removemymessages', 'dmm', 'clearmymessage', 'dom'])
 async def deleteMyMessages(ctx, amount, status=True):
-    await ctx.message.delete()
+    notify = Notify(ctx=ctx, title='Deleting My Messages...')
+    notify.prepair()
 
     DeletedCount = 0
     MessageList = []
 
     try:
         if (ctx.guild):
-            await ctx.message.channel.purge(limit=int(amount),bulk=True)
-            await notify.success(ctx, "Deleted {} messages from the chat".format(amount))
+            await ctx.message.channel.purge(limit=int(amount))
+            notify.success(content="Deleted {} messages from the chat".format(amount))
         else:
             Embed = discord.Embed(description=f"> Deleted messages: **{int(DeletedCount)}** / **{len(MessageList)}**.\n> Current Status: **Starting...**", color=discord.Colour.blue())
             Message = await sendEmbed(ctx, Embed)
@@ -46,4 +49,4 @@ async def deleteMyMessages(ctx, amount, status=True):
             await Message.delete();
             
     except Exception as e:
-        await notify.error(ctx, "Something goes wrong, try again!")
+        notify.error(content="Something goes wrong, try again!")
