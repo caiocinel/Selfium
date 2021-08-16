@@ -8,7 +8,7 @@ from app.helpers import Notify
 @commands.has_permissions(manage_messages=True)
 async def deleteAllMessages(ctx):
     notify = Notify(ctx=ctx, title = 'Deleting All Channel Messages...')
-    
+    notify.prepair()
     async for message in ctx.message.channel.history():
         try:
             await message.delete()
