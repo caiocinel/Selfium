@@ -1,13 +1,13 @@
 import asyncio
 from discord.ext import commands
 from app.vars.client import client
-from app.helpers import notify, delete
+from app.helpers import Notify
 
 @client.command(aliases=['removeallmessages', 'DAM', 'clearChannel'])
 @commands.guild_only()
 @commands.has_permissions(manage_messages=True)
 async def deleteAllMessages(ctx):
-    await ctx.message.delete()
+    notify = Notify(ctx=ctx, title = 'Deleting All Channel Messages...')
     
     async for message in ctx.message.channel.history():
         try:
@@ -16,5 +16,5 @@ async def deleteAllMessages(ctx):
         except:
             pass
     else:
-        await notify.success(ctx,'All messages were deleted successfully')         
+        await notify.success(content='All messages were deleted successfully')         
         
