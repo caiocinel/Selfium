@@ -8,6 +8,7 @@ from discord.ext import commands
 @client.command(aliases=["serverChannels"])
 async def channels(ctx):
     notify = Notify(ctx=ctx, title="Server Channels", color=discord.Color.purple())
+    notify.prepair()
     fields = [("Voice Channels", "** **", False)]
     for channel in ctx.guild.voice_channels:
         fields.append(("\u2800", f"```{channel.name}```", True))
