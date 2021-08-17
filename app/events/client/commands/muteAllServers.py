@@ -2,10 +2,12 @@ import discord
 import asyncio
 
 from app.vars.client import client
-from app.helpers import sendEmbed
+from app.helpers import sendEmbed, Notify
     
 @client.command(aliases=['muteServerList', 'mas', 'forceMuteServers'])
 async def muteAllServers(ctx):
+    notify = Notify(ctx=ctx, title='Muting All Servers...')
+    notify.prepair()
     muted_servers = 0
     Embed = discord.Embed(description=f"> Servers mutated until now: **{int(muted_servers)}** / **{len(client.guilds)}**.\n> Current Status: **Starting...**", color=discord.Colour.blue())
     Message = await sendEmbed(ctx, Embed)
@@ -24,10 +26,5 @@ async def muteAllServers(ctx):
         except:
             pass
 
-    if (Message.embeds):
-        Embed = discord.Embed(description=f"> Total number of mutated servers: **{int(muted_servers)}** / **{len(client.guilds)}**.\n> Current Status: **All Done!**", color=discord.Colour.green())
-        await Message.edit(embed=Embed)
-    else:
-        await Message.edit(f"> Total number of mutated servers: **{int(muted_servers)}** / **{len(client.guilds)}**.\n> Current Status: **All done!**")
-
-    return
+    
+    notify.success(content=f"> Total number of mutated servers: **{int(muted_servers)}** / **{len(client.guilds)}**.\n> Current Status: **All Done!**")
