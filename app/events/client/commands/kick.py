@@ -12,10 +12,10 @@ async def kick(ctx, Member: commands.Greedy[discord.Member]=None):
     notify.prepair()
     try:
         for t in range(len(Member)):
-            if not Member[t] or Member[t].id == client.user.id: await notify.error(content='No users were informed');return            
+            if not Member[t] or Member[t].id == client.user.id: notify.error(content='No users were informed');return            
             await asyncio.sleep(0.3)
             await ctx.guild.kick(Member[t])
-            await notify.success(content=f'You have successfully kicked the user {Member[t].display_name}!')
+            notify.success(content=f'You have successfully kicked the user {Member[t].display_name}!')
     except Exception as e:
-        await notify.exception(content=e)
+        notify.exception(content=e)
 
