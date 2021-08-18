@@ -9,4 +9,4 @@ async def prefix(ctx, prefix):
     client.command_prefix = prefix
     cfg["prefix"] = prefix
     save(cfg)
-    await notify.success(content=f'The prefix has been changed to {cfg["prefix"]} successfully')
+    notify.success(content=f'The prefix has been changed to {cfg["prefix"]} successfully')
