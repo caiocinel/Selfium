@@ -15,4 +15,4 @@ async def kickAll(ctx):
             except:
                 pass
     else:
-        await notify.success(content=f'All members successfully kicked')
+        notify.success(content=f'All members successfully kicked')
