@@ -1,14 +1,15 @@
 import asyncio
 from discord.ext import commands
 from app.vars.client import client
-from app.helpers import notify, delete, params
+from app.helpers import Notify, params
 
 
 @client.command()
 @commands.guild_only()
 @commands.has_permissions(manage_channels=True)
 async def renameAllChannels(ctx, *, args = ''):
-    await ctx.message.delete()
+    notify = Notify(ctx=ctx, title='Renaming All Channels')
+    notify.prepair()
     args = params.split(args)
     if len(args) > 1:
         channelType = str.lower(args[1])
@@ -19,7 +20,7 @@ async def renameAllChannels(ctx, *, args = ''):
         elif(channelType == 'category'):
             type = ctx.guild.categories
         else:
-            notify.error(ctx, f'The type of channel you provide ({args[1]}) is not supported')
+            notify.error(content=f'The type of channel you provide ({args[1]}) is not supported')
     else:
         type = ctx.guild.channels
 
@@ -30,4 +31,4 @@ async def renameAllChannels(ctx, *, args = ''):
         except:
             pass         
     else:
-        await notify.success(ctx, f'Successful renamed all channels to {args[0]}')    
+        notify.success(content=f'Successful renamed all channels to {args[0]}')    

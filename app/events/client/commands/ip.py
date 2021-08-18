@@ -1,27 +1,25 @@
 import requests
 import discord
 from app.vars.client import client
-from app.helpers import delete
+from app.helpers import Notify
 
 @client.command(aliases=['ipinfo', 'iplocate', 'getIP'])
 async def ip(ctx, *, IP):
-    await ctx.message.delete()
+    notify = Notify(ctx=ctx, title='IP Information')
+    notify.prepair()
     ipInfo = requests.get(f'http://extreme-ip-lookup.com/json/{IP}').json()
     fields = [
-        {'name': 'IP', 'value': ipInfo['query']},
-        {'name': 'Type', 'value': ipInfo['ipType']},
-        {'name': 'Country', 'value': ipInfo['country']},
-        {'name': 'City', 'value': ipInfo['city']},
-        {'name': 'Country', 'value': ipInfo['country']},
-        {'name': 'Hostname', 'value': ipInfo['ipName']},
-        {'name': 'ISP', 'value': ipInfo['isp']},
-        {'name': 'Latitute', 'value': ipInfo['lat']},
-        {'name': 'Longitude', 'value': ipInfo['lon']},
-        {'name': 'Org', 'value': ipInfo['org']},
-        {'name': 'Region', 'value': ipInfo['region']},
+        ('IP', ipInfo['query'], True),
+        ('Type', ipInfo['ipType'], True),
+        ('Country', ipInfo['country'], True),
+        ('City', ipInfo['city'], True),
+        ('Country', ipInfo['country'], True),
+        ('Hostname', ipInfo['ipName'], True),
+        ('ISP', ipInfo['isp'], True),
+        ('Latitute', ipInfo['lat'], True),
+        ('Longitude', ipInfo['lon'], True),
+        ('Org', ipInfo['org'], True),
+        ('Region', ipInfo['region'], True),
     ]
-    embed = discord.Embed()
-    for field in fields:
-        if field['value']:
-            embed.add_field(name=field['name'], value=field['value'], inline=True)
-    return await ctx.send(embed=embed)
+
+    notify.fields(fields=fields)

@@ -10,4 +10,6 @@ async def byMember(member):
 
 async def byID(id):
     target = await client.fetch_user_profile(int(id))
+    if target == None:
+        target = client.fetch_user(int(id))
     return target

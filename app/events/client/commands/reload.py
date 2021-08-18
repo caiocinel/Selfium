@@ -1,16 +1,15 @@
 import os
 import sys
-from app import auth
 from app.vars.client import client
-from app.helpers import delete, notify
+from app.helpers import Notify
 
 @client.command()
 async def reload(ctx):
+    notify = Notify(ctx=ctx, title='Reloading')
     try:
-        await ctx.message.delete()
-        await notify.success(ctx, 'Selfium will reload, please wait...', None)
+        notify.success(content='Selfium will reload, please wait...')
         os.execv(sys.executable, ["python"] + sys.argv)
     except Exception as e:
         print(e)
-        await notify.error(ctx, 'Something goes wrong, verify the console logs!', None)
+        notify.error(content='Something goes wrong, verify the console logs!')
         

@@ -1,15 +1,13 @@
 import discord
 from app.vars.client import client
-from app.helpers import delete, getUser, getGuild
+from app.helpers import Notify, getUser, getGuild
 
 @client.command()
 async def inviteInfo(ctx, link):
-    try:
-        await ctx.message.delete()
-    except:
-        pass
-
+    notify = Notify(ctx=ctx, title='Invite information')
+    notify.prepair()
     linkData = await client.fetch_invite(url=link)
+    
     if (linkData.inviter):
         inviterData = await getUser.byID(linkData.inviter.id)
     try:
@@ -17,23 +15,18 @@ async def inviteInfo(ctx, link):
     except:
         guildData = linkData.guild
 
-    embed = discord.Embed(title="Invite information", colour=discord.Color.purple())
-    embed.set_thumbnail(url=guildData.icon_url)
     fields = [
-        ("ID", f"```{guildData.id}```"),
-        ("Name::", f"```{guildData.name}```"),
-        ("Description", f"```{guildData.description}```"),
-        ("Created in:", f'```{guildData.created_at.strftime("%d/%m/%Y")}```'),
-        ("Member Count:", f"```{int(linkData.approximate_member_count)}```"), 
-        ("Link", f"```{linkData.url}```"),
-        ("\u200b", "\u200b"),
+        ("ID", f"```{guildData.id}```", False),
+        ("Name::", f"```{guildData.name}```", False),
+        ("Description", f"```{guildData.description}```", False),
+        ("Created in:", f'```{guildData.created_at.strftime("%d/%m/%Y")}```', False),
+        ("Member Count:", f"```{int(linkData.approximate_member_count)}```", False), 
+        ("Link", f"```{linkData.url}```", False),
+        ("\u200b", "\u200b", False),
     ]
-    for name, value in fields:
-        embed.add_field(name=name, value=value, inline=False)
         
     if (linkData.inviter):
-        embed.add_field(name="Inviter ID:", value=f"```{inviterData.user.id}```")
-        embed.add_field(name="Inviter:", value=f"```{inviterData.user.name + '#' + inviterData.user.discriminator}```")
+        fields.append(("Inviter ID:", f"```{inviterData.user.id}```", False))
+        fields.append(("Inviter:", f"```{inviterData.user.name + '#' + inviterData.user.discriminator}```", False))
 
-    embed.set_footer(text='Selfium (◔‿◔)')
-    await ctx.send(embed=embed)
+    notify.fields(fields=fields)

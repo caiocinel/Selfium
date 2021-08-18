@@ -1,51 +1,96 @@
-  
+from logging import exception
 import discord
-import time
-from app.helpers import delete
-from app.filesystem import cfg
+import asyncio
+
+from discord.embeds import EmptyEmbed
+
+loop = asyncio.get_event_loop()
+class Notify:    
+
+    def __init__(self, **kwargs):
+        self.name = kwargs.get('title', 'Command')
+        self.ctx  = kwargs.get('ctx')
+        self.color = kwargs.get('color', discord.Colour.dark_blue()) 
+        self.embed = discord.Embed()
+        self.__canEmbed()
+
+    def prepair(self):
+        self.content = 'Processing Command...'
+        self.__embedHandler()
+
+    def success(self, **kwargs):
+        self.name = kwargs.get('title', self.name)
+        self.content = kwargs.get('content','Command Successfully Executed!')      
+        self.color = kwargs.get('color', discord.Colour.green())
+        self.__embedHandler()
+
+    def error(self, **kwargs):
+        self.name = kwargs.get('title', self.name)
+        self.content = kwargs.get('content','Oops, there was a problem')      
+        self.color = kwargs.get('color', discord.Colour.red())
+        self.__embedHandler()
+
+    def alert(self, **kwargs):
+        self.name = kwargs.get('title', self.name)
+        self.content = kwargs.get('content','Oops, something unexpected might have happened')      
+        self.color = kwargs.get('color', discord.Colour.gold())
+        self.__embedHandler()
+
+    def fields(self, **kwargs):
+        self.name = kwargs.get('title', self.name)
+        self.color = kwargs.get('color', discord.Colour.blue())
+        self.field = kwargs.get('fields', None)
+        self.__set_fields()
+
+    def exception(self, content):
+        self.error(content=content)
+
+    def image(self, **kwargs):
+        self.name = kwargs.get('title', self.name)
+        self.imageURL = kwargs.get('image', None)
+        self.color = kwargs.get('color', discord.Colour.purple())
+        self.__set_image()
 
 
-async def success(ctx, message, count : int = cfg['notifyTime']):
-    try:
-        embed = discord.Embed(description=f'```{message}```', colour=discord.Colour.green())
-        embedMessage = await ctx.send(embed=embed)
-        time.sleep(count)
-    except:
-        pass
-    finally:
-        if(embedMessage):
-            await embedMessage.delete()
+    def __set_image(self):
+        self.content = ''
+        if (self.__canEmbed()) != True:
+            self.content = f'{self.imageURL}'
 
-async def error(ctx, message, count : int = cfg['notifyTime']):
-    try:
-        embed = discord.Embed(description=f'```{message}```', colour=discord.Colour.dark_red())
-        embedMessage = await ctx.send(embed=embed)
-        time.sleep(count)
-    except:
-        pass
-    finally:
-        if(embedMessage):
-            await embedMessage.delete()
-               
-async def alert(ctx, message, count : int = cfg['notifyTime']):
-    try:
-        embed = discord.Embed(description=f'{message}', colour=discord.Colour.gold())
-        embedMessage = await ctx.send(embed=embed)
-        time.sleep(count)
-    finally:
-        if(embedMessage):
-            await embedMessage.delete()
+        self.__embedHandler()
 
-async def plain(ctx, message, title=None):
-    embed = discord.Embed()
-    if(title):
-        embed.title = title
-    embed.description = message
-    await ctx.send(embed=embed)
+    def __set_fields(self):
+        self.content = ''
+        if (self.__canEmbed()) != True:
+            for name, value, inline in self.field:
+                self.content += f'**{name}** {value} ' + '\n'
+        self.__embedHandler()
 
-async def exception(ctx, e = 'Something went wrong, try again!'):
-    await error(ctx, e, 5)
+    def __canEmbed(self):
+        if self.ctx.channel.permissions_for(self.ctx.author).embed_links:
+            return True
+        
+    def __embedHandler(self):
+        if self.__canEmbed() == True:
+            loop.create_task(self.__sendEmbed())
+        else:
+            loop.create_task(self.__sendMessage())
 
-def ConsoleLog(LogMessage):
-    if cfg['consoleLogs']:
-        return print(LogMessage)
+    async def __sendEmbed(self):
+        self.embed.title = self.name
+        self.embed.description = self.content
+        self.embed.color = self.color
+        self.embed.clear_fields()
+
+        if hasattr(self,'field'):
+            for name, value, inline in self.field:
+                self.embed.add_field(name=name, value=value, inline=inline)
+        
+        if hasattr(self,'imageURL'):
+            self.embed.set_image(url=self.imageURL)
+
+        await self.ctx.message.edit(embed = self.embed, content = '')
+
+    async def __sendMessage(self):
+        await self.ctx.message.edit(content=f'**{self.name}**' + '\n' + self.content.replace('`',''))
+        

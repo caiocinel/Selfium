@@ -1,33 +1,18 @@
 import asyncio
 from app.vars.client import client
-from app.helpers import notify
+from app.helpers import Notify
     
 @client.command(aliases=['leaveAllServers', 'LaS'])
 async def leaveServers(ctx):
-    AllowList = [847280853255716954]
     Total = 0
-
-    await ctx.message.delete()
-
+    notify = Notify(ctx=ctx, title='Leaving All Servers')
+    notify.prepair()
     for server in client.guilds:
-        if not(server.id in AllowList):
-
             try:
                 await server.leave()
                 Total = Total + 1
-                notify.ConsoleLog(f'[{server.name}]: has been successfully removed from your server list.')
             except Exception as e:
                 if (e.text == 'Invalid Guild'):
-                    notify.ConsoleLog('You probably own this server, or this server is invalid or blocked.')
+                    notify.exception(title='Oops',content='You probably own this server, or this server is invalid or blocked.')
                 pass
-
-        else:
-            notify.ConsoleLog(f'[{server.name}]: was ignored because it was in the AllowList!')
-
-    message = await ctx.channel.send(
-        f'You are out of a total of {Total} servers.'
-    )
-
-    await asyncio.sleep(5)
-
-    await message.delete()
+    notify.success(content=f'You are out of a total of {Total} servers.')

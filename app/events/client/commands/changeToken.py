@@ -2,15 +2,16 @@ import json
 import requests
 from app import filesystem
 from app.auth import token
-from app.helpers import delete, notify
+from app.helpers import Notify
 from app.vars.client import client
 
 @client.command(aliases=['settoken'])
 async def changeToken(ctx, token):
-    await ctx.message.delete()
+    notify = Notify(ctx=ctx, title="Changing Token")
+    notify.prepair()
     if(token(token)):
         filesystem.cfg['token'] = token
         filesystem.save(filesystem.cfg)   
-        await notify.success(ctx, f"Token was successfully changed, use \"{filesystem.cfg['prefix']}reload\" to apply the changes.")
+        notify.success(content=f"Token was successfully changed, use \"{filesystem.cfg['prefix']}reload\" to apply the changes.")
     else:
-        await notify.error(ctx, 'The provided token is not valid!')
+        notify.error(content='The provided token is not valid!')

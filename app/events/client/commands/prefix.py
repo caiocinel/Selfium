@@ -1,11 +1,12 @@
 from app.filesystem import cfg, save
 from app.vars.client import client
-from app.helpers import delete, notify
+from app.helpers import Notify
 
 @client.command()
 async def prefix(ctx, prefix):
-    await ctx.message.delete()
+    notify = Notify(ctx=ctx, title='Changing Prefix')
+    notify.prepair()
     client.command_prefix = prefix
     cfg["prefix"] = prefix
     save(cfg)
-    await notify.success(ctx, f'The prefix has been changed to {cfg["prefix"]} successfully')
+    notify.success(content=f'The prefix has been changed to {cfg["prefix"]} successfully')

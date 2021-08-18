@@ -1,14 +1,11 @@
 import discord
 from discord.ext import commands
 from app.vars.client import client
-from app.helpers import delete, sendEmbed
+from app.helpers import Notify
 
 @client.command(aliases=['profilepicture'])
-async def avatar(ctx, Member: commands.Greedy[discord.Member]):
-    await ctx.message.delete()
-    for t in range(len(Member)):
-        embed = discord.Embed(colour=discord.Colour.green())
-        embed.set_author(name=f"🖼️ Here's {Member[t].display_name} profile picture", url=f"{Member[t].avatar_url.BASE + Member[t].avatar_url._url}")
-        embed.set_image(url=Member[t].avatar_url.BASE + Member[t].avatar_url._url)
-        await sendEmbed(ctx,embed)
+async def avatar(ctx, Member: discord.Member = None):
+    notify = Notify(ctx=ctx, title = 'Avatar')
+    notify.prepair()
+    notify.image(title=f"🖼️ Here's {Member.display_name} profile picture", image=f"{Member.avatar_url.BASE + Member.avatar_url._url}")
 

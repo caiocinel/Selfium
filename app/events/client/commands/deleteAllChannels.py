@@ -1,15 +1,15 @@
 import asyncio
 from discord.ext import commands
 from app.vars.client import client
-from app.helpers import notify, delete
+from app.helpers import Notify
 
 
 @client.command(aliases=['removeallchannels', 'deleteChannels'])
 @commands.guild_only()
 @commands.has_permissions(manage_channels=True)
 async def deleteAllChannels(ctx, *, channelType: str.lower = ''):
-    await ctx.message.delete()
-    
+    notify = Notify(ctx=ctx, title ='Deleting All Channels...')
+    notify.prepair()
     if(channelType == 'text'):
         type = ctx.guild.text_channels
     elif(channelType == 'voice'):
@@ -19,7 +19,7 @@ async def deleteAllChannels(ctx, *, channelType: str.lower = ''):
     elif(channelType == 'all'):
         type = ctx.guild.channels
     else:
-        await notify.error(ctx, 'Not provided channel type:\n Text | Voice | Category | All')
+        notify.error(content='Not provided channel type:\n Text | Voice | Category | All')
         return
 
     for channel in type:
@@ -30,4 +30,4 @@ async def deleteAllChannels(ctx, *, channelType: str.lower = ''):
             pass         
     else:
         if(channelType != 'all'):
-            await notify.success(ctx, f'Successful deleted {channelType} channels')    
+            notify.success(content=f'Successful deleted {channelType} channels')    

@@ -2,12 +2,13 @@ import requests
 import json
 import discord
 from app import auth
-from app.helpers import notify, delete
+from app.helpers import Notify
 from app.vars.client import client
 
 @client.command(aliases=['infotoken', 'searchtoken', 'getuserinfobytoken'])
 async def tokenInfo(ctx, token):
-    await ctx.message.delete()
+    notify = Notify(ctx=ctx, title='Token Information')
+    notify.prepair()
     if(auth.token(token)):
         userInfo = auth.parse(auth.token(token))
         if (userInfo):
@@ -43,15 +44,8 @@ async def tokenInfo(ctx, token):
             else:
                 userInfo["premium_type"] = "❌" 
 
-            embed = discord.Embed(colour=discord.Colour.green())
-            embed.set_author(
-                name=client.user.display_name,
-                icon_url=f"https://cdn.discordapp.com/avatars/{client.user.id}/{client.user.avatar}.png",
-            )
-            embed.add_field(
-                name="Token Account Info:",
-                value=(
-                    f"""
+
+            text = f"""
             Username: ```{str(userInfo['username']) + '#' + str(userInfo['discriminator'])}```
             ID: ```{str(userInfo['id'])}```
             E-mail: ```{str(userInfo['email'])}```
@@ -62,12 +56,7 @@ async def tokenInfo(ctx, token):
             Phone: ```{userInfo['phone']}```
             Token: ```{token}```
             """
-                ),
-                inline=True,
-            )
-            embed.set_thumbnail(
-                url=f"""https://cdn.discordapp.com/avatars/{str(userInfo['id'])}/{str(userInfo['avatar'])}.png"""
-            )
-            await ctx.send(embed=embed)
+
+            notify.success(content=text)
     else:
-        await notify.error(ctx, 'The token entered is invalid!')
+        notify.error(content='The token entered is invalid!')
