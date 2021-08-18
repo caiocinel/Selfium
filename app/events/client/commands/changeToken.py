@@ -2,7 +2,7 @@ import json
 import requests
 from app import filesystem
 from app.auth import token
-from app.helpers import delete, Notify
+from app.helpers import Notify
 from app.vars.client import client
 
 @client.command(aliases=['settoken'])

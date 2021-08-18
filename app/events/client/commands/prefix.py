@@ -1,6 +1,6 @@
 from app.filesystem import cfg, save
 from app.vars.client import client
-from app.helpers import delete, Notify
+from app.helpers import Notify
 
 @client.command()
 async def prefix(ctx, prefix):

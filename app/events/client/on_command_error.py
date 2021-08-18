@@ -1,5 +1,5 @@
 from app.vars.client import client
-from app.helpers import Notify, delete
+from app.helpers import Notify
 
 @client.event
 async def on_command_error(ctx, error):

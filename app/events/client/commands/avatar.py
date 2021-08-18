@@ -1,7 +1,7 @@
 import discord
 from discord.ext import commands
 from app.vars.client import client
-from app.helpers import delete, sendEmbed, Notify
+from app.helpers import Notify
 
 @client.command(aliases=['profilepicture'])
 async def avatar(ctx, Member: discord.Member = None):

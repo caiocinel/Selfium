@@ -2,7 +2,7 @@ import discord
 import asyncio
 from discord.ext import commands
 from app.vars.client import client
-from app.helpers import Notify, delete
+from app.helpers import Notify
 
 @client.command()
 @commands.guild_only()
