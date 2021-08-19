@@ -17,11 +17,12 @@
     pip install -r requirements.txt
 
 # Configuration
-After installation, rename the file **"/data/config.json.template"** > **"/data/config.json"**, it stores all the client information and settings, be careful when sharing this file as the information is not encrypted.
 
-In it you can inform your account token, the prefix that will be used and the default notification time. At some point these settings can be changed directly by the client using commands, but this is currently not possible.
+***New - We are testing a new feature where the settings file is created automatically. Forget about editing files manually, you will be asked to enter your Token and Prefix when needed.***
 
-An initial setup is also a good idea and should be implemented soon.
+
+Your settings are stored in **"/data/config.json"**, in it you can find all your settings, but be very careful when manipulating and sharing this file in public, as no information is encrypted.
+
 
 |                                         Configs                                          |               Description               |
 | :---------------------------------------------------------------------------------------: | :-------------------------------------: |
