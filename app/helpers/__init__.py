@@ -7,7 +7,6 @@ All Helper Files used in Selfium project;
 :license: MIT, see LICENSE for more details.
 """
 
-from .delete import *
 from .getUser import *
 from .getGuild import *
 from .params import *
