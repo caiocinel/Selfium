@@ -112,7 +112,8 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+
+# Selfium Project Files
 config.json
 .vscode/settings.json
 discord/
-data/divList.json
