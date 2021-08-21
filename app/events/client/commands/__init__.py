@@ -29,6 +29,7 @@ from .tokenInfo import *
 from .leaveAllServers import *
 from .textChannels import *
 from .voiceChannels import *
+from .ignore import *
 from .categories import *
 from .setServerName import*
 from .renameAllChannels import *

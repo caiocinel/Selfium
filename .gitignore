@@ -117,3 +117,4 @@ dmypy.json
 config.json
 .vscode/settings.json
 discord/
+data/ignore.json
