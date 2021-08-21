@@ -11,7 +11,7 @@ All Client Command Files used in Selfium project;
 from .avatar import *
 from .ban import *
 from .banbyid import *
-from .debug import *
+from .template import *
 from .kick import *
 from .muteAllServers import *
 from .kickbyid import *
