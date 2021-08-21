@@ -47,6 +47,7 @@ We are still taking the initial steps in the development of this project, new fe
 |[deleteMyMessages](https://github.com/caiocinel/Selfium/blob/main/app/events/client/commands/deleteOwnMessages.py)   |Deletes the amount of messages sent by you|
 |[inviteInfo](https://github.com/caiocinel/Selfium/blob/main/app/events/client/commands/inviteInfo.py)   |Displays information about an invite link|
 |[ip](https://github.com/caiocinel/Selfium/blob/main/app/events/client/commands/inviteInfo.py)   |Displays information about provided ip|
+|[ignore](https://github.com/caiocinel/Selfium/blob/main/app/events/client/commands/ignore.py)   |Add server to exception list when using bulk commands|
 |[kick](https://github.com/caiocinel/Selfium/blob/main/app/events/client/commands/kick.py)   |Kick user from Guild|
 |[kickAll](https://github.com/caiocinel/Selfium/blob/main/app/events/client/commands/kick.py)   |Kick all users from Guild|
 |[messageLogging](https://github.com/caiocinel/Selfium/blob/main/app/events/client/commands/logMessages.py)   |Write all received messages in a file|
