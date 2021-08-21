@@ -2,6 +2,7 @@ import asyncio
 from discord.ext import commands
 from app.vars.client import client
 from app.helpers import Notify
+from app.filesystem import ignore
 
 
 @client.command(aliases=['removeallchannels', 'deleteChannels'])
@@ -10,6 +11,11 @@ from app.helpers import Notify
 async def deleteAllChannels(ctx, *, channelType: str.lower = ''):
     notify = Notify(ctx=ctx, title ='Deleting All Channels...')
     notify.prepair()
+
+    if str(ctx.guild.id) in ignore.getIgnore():
+        notify.error(content='The server {} is being ignored'.format(ctx.guild.name))
+        return
+
     if(channelType == 'text'):
         type = ctx.guild.text_channels
     elif(channelType == 'voice'):

@@ -3,6 +3,7 @@ import asyncio
 
 from app.vars.client import client
 from app.helpers import sendEmbed, Notify
+from app.filesystem import ignore
     
 @client.command(aliases=['muteServerList', 'mas', 'forceMuteServers'])
 async def muteAllServers(ctx):
@@ -12,6 +13,9 @@ async def muteAllServers(ctx):
     Embed = discord.Embed(description=f"> Servers mutated until now: **{int(muted_servers)}** / **{len(client.guilds)}**.\n> Current Status: **Starting...**", color=discord.Colour.blue())
     Message = await sendEmbed(ctx, Embed)
     for guild in client.guilds:
+        if str(guild.id) in ignore.getIgnore():
+                notify.alert(content='The server {} is being ignored'.format(guild.name))
+                return
         try:
             await guild.mute()
             muted_servers = muted_servers + 1

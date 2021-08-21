@@ -1,6 +1,7 @@
 import asyncio
 from app.vars.client import client
 from app.helpers import Notify
+from app.filesystem import ignore
     
 @client.command(aliases=['leaveAllServers', 'LaS'])
 async def leaveServers(ctx):
@@ -8,11 +9,16 @@ async def leaveServers(ctx):
     notify = Notify(ctx=ctx, title='Leaving All Servers')
     notify.prepair()
     for server in client.guilds:
-            try:
-                await server.leave()
-                Total = Total + 1
-            except Exception as e:
-                if (e.text == 'Invalid Guild'):
-                    notify.exception(title='Oops',content='You probably own this server, or this server is invalid or blocked.')
-                pass
-    notify.success(content=f'You are out of a total of {Total} servers.')
+        if str(server.id) in ignore.getIgnore():
+            notify.alert(content='The server {} is being ignored'.format(server.name))
+            return
+        try:
+            await server.leave()
+            Total = Total + 1
+        except Exception as e:
+            if (e.text == 'Invalid Guild'):
+                notify.exception(title='Oops',content='You probably own this server, or this server is invalid or blocked.')
+            pass
+    notify.success(content=f'You are out of a total of {Total} servers.') #How the fuck will this be sent if it leaves all servers???
+
+        

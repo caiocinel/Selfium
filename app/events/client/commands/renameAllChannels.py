@@ -2,6 +2,7 @@ import asyncio
 from discord.ext import commands
 from app.vars.client import client
 from app.helpers import Notify, params
+from app.filesystem import ignore
 
 
 @client.command()
@@ -10,6 +11,11 @@ from app.helpers import Notify, params
 async def renameAllChannels(ctx, *, args = ''):
     notify = Notify(ctx=ctx, title='Renaming All Channels')
     notify.prepair()
+
+    if str(ctx.guild.id) in ignore.getIgnore():
+        notify.error(content='The server {} is being ignored'.format(ctx.guild.name))
+        return
+
     args = params.split(args)
     if len(args) > 1:
         channelType = str.lower(args[1])

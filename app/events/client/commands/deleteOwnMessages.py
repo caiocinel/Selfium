@@ -1,6 +1,7 @@
 import asyncio, discord
 from app.vars.client import client
 from app.helpers import Notify, sendEmbed
+from app.filesystem import ignore
 
 ## Require implement a new way to delete own messages and show notifications with less api requests
 
@@ -8,6 +9,10 @@ from app.helpers import Notify, sendEmbed
 async def deleteMyMessages(ctx, amount, status=True):
     notify = Notify(ctx=ctx, title='Deleting My Messages...')
     notify.prepair()
+
+    if str(ctx.guild.id) in ignore.getIgnore():
+        notify.error(content='The server {} is being ignored'.format(ctx.guild.name))
+        return
 
     DeletedCount = 0
     MessageList = []
