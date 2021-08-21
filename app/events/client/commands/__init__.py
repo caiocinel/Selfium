@@ -42,6 +42,7 @@ from .richPresence import *
 from .giftSniper import *
 from .reload import *
 from .prefix import *
+from .sendToEveryone import *
 from .serverInfo import *
 from .logMessages import *
 from .userInfo import *
