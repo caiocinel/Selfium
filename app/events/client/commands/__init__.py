@@ -17,6 +17,7 @@ from .muteAllServers import *
 from .kickbyid import *
 from .banAll import *
 from .kickAll import *
+from .removeAllFriends import *
 from .deleteOwnMessages import *
 from .changeToken import *
 from .embed import *
