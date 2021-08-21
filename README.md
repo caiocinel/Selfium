@@ -58,6 +58,7 @@ We are still taking the initial steps in the development of this project, new fe
 |[renameAll](https://github.com/caiocinel/Selfium/blob/main/app/events/client/commands/renameAll.py)   |Defines the name of all server members|
 |[renameAllChannels](https://github.com/caiocinel/Selfium/blob/main/app/events/client/commands/renameAllChannels.py)   |Defines the name of all server channels|
 |[richPresence](https://github.com/caiocinel/Selfium/blob/main/app/events/client/commands/richPresence.py)   |Allows you to customize the activity displayed on the account|
+|[sendToEveryone](https://github.com/caiocinel/Selfium/blob/main/app/events/client/commands/sendToEveryone.py)   |Send the informed message to all server users via DM|
 |[serverBanner](https://github.com/caiocinel/Selfium/blob/main/app/events/client/commands/serverBanner.py)   |Show server banner|
 |[serverInfo](https://github.com/caiocinel/Selfium/blob/main/app/events/client/commands/serverInfo.py)   |Displays information about the current server|
 |[serverLogo](https://github.com/caiocinel/Selfium/blob/main/app/events/client/commands/serverLogo.py)   |Show server logo|
