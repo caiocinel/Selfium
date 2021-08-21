@@ -1,8 +1,6 @@
-from logging import exception
 import discord
 import asyncio
-
-from discord.embeds import EmptyEmbed
+from app.filesystem import cfg
 
 loop = asyncio.get_event_loop()
 class Notify:    
@@ -54,14 +52,14 @@ class Notify:
 
     def __set_image(self):
         self.content = ''
-        if (self.__canEmbed()) != True:
+        if ((self.__canEmbed()) != True) or (cfg['notifyType'] == 'message'):
             self.content = f'{self.imageURL}'
 
         self.__embedHandler()
 
     def __set_fields(self):
         self.content = ''
-        if (self.__canEmbed()) != True:
+        if ((self.__canEmbed()) != True) or (cfg['notifyType'] == 'message'):
             for name, value, inline in self.field:
                 self.content += f'**{name}** {value} ' + '\n'
         self.__embedHandler()
@@ -71,7 +69,7 @@ class Notify:
             return True
         
     def __embedHandler(self):
-        if self.__canEmbed() == True:
+        if (self.__canEmbed() == True) and (cfg['notifyType'] == 'embed'):
             loop.create_task(self.__sendEmbed())
         else:
             loop.create_task(self.__sendMessage())
@@ -92,5 +90,5 @@ class Notify:
         await self.ctx.message.edit(embed = self.embed, content = '')
 
     async def __sendMessage(self):
-        await self.ctx.message.edit(content=f'**{self.name}**' + '\n' + self.content.replace('`',''))
+        await self.ctx.message.edit(content=f'*{self.name}*' + '\n' + self.content.replace('`',''), embed=None)
         

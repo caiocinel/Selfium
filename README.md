@@ -24,15 +24,9 @@
 Your settings are stored in **"/data/config.json"**, in it you can find all your settings, but be very careful when manipulating and sharing this file in public, as no information is encrypted.
 
 
-|                                         Configs                                          |               Description               |
-| :---------------------------------------------------------------------------------------: | :-------------------------------------: |
-| [Token](https://www.youtube.com/watch?v=YEgFvgg7ZPI)| It's your account authentication key, don't give it to anyone |
-| Prefix    |It is the first character that will be used to identify if it is a Selfium command|
-| NotifyTime   |It's the time that Selfium notifications will be visible|
-| sniperToken>Enabled   |Status of Nitro Sniper|
-| sniperToken>Token   |Account token that nitro will be redeemed (if not filled in, current account will be used)|
 
----------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------
+
 <p align="center">
     <h2 align="center">Features</h2>
 </b >
@@ -56,6 +50,7 @@ We are still taking the initial steps in the development of this project, new fe
 |[kick](https://github.com/caiocinel/Selfium/blob/main/app/events/client/commands/kick.py)   |Kick user from Guild|
 |[kickAll](https://github.com/caiocinel/Selfium/blob/main/app/events/client/commands/kick.py)   |Kick all users from Guild|
 |[messageLogging](https://github.com/caiocinel/Selfium/blob/main/app/events/client/commands/logMessages.py)   |Write all received messages in a file|
+|[notify](https://github.com/caiocinel/Selfium/blob/main/app/events/client/commands/notify.py)   |Allows you to choose how command notifications are displayed|
 |[leaveAllServers](https://github.com/caiocinel/Selfium/blob/main/app/events/client/commands/leaveAllServers.py)   |Quit all servers the client is on|
 |[nitroSniper](https://github.com/caiocinel/Selfium/blob/main/app/events/client/commands/giftSniper.py)   |Redeem all received nitro gifts|
 |[reload](https://github.com/caiocinel/Selfium/blob/main/app/events/client/commands/reload.py)   |Reboot Selfium to Apply Settings|

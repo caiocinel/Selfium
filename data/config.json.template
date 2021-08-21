@@ -3,7 +3,7 @@
   "prefix": "",
   "notifyTime": 3,
   "msgLogger": 0,
-  "consoleLogs": false,
+  "notifyType": "embed",
   "sniperToken": {
     "enabled": false,
     "token": ""

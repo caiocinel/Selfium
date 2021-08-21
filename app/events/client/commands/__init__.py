@@ -13,6 +13,7 @@ from .ban import *
 from .banbyid import *
 from .template import *
 from .kick import *
+from .notify import *
 from .muteAllServers import *
 from .kickbyid import *
 from .banAll import *
