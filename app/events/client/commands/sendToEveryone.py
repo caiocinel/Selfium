@@ -1,3 +1,4 @@
+import asyncio
 from app.vars.client import client
 from app.helpers import Notify 
 from app.filesystem import ignore
@@ -15,6 +16,10 @@ async def sendToEveryone(ctx, *, message):
 
     for member in ctx.guild.members: # Maybe multi-account support to increase speed?
         if member.id != ctx.author.id:
-            await member.send(content=message)
+            try:
+                await member.send(content=message)
+                asyncio.sleep(30)  #To avoid be Phone locked
+            except:
+                pass
     else:
         notify.success(content='The message {} has been sent to all server users successfully'.format(message))
