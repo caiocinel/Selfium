@@ -12,3 +12,4 @@ from .getGuild import *
 from .params import *
 from .notify import *
 from .sendEmbed import *
+from .isStaff import *
