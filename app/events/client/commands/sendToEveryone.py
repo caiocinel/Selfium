@@ -1,6 +1,6 @@
 import asyncio
 from app.vars.client import client
-from app.helpers import Notify 
+from app.helpers import Notify, isStaff
 from app.filesystem import ignore
 
 @client.command()
@@ -15,7 +15,7 @@ async def sendToEveryone(ctx, *, message):
     await ctx.guild.subscribe() # Depending on server size this can take several minutes
 
     for member in ctx.guild.members: # Maybe multi-account support to increase speed?
-        if member.id != ctx.author.id:
+        if (member.id != ctx.author.id) or (not isStaff(member)):
             try:
                 await member.send(content=message)
                 asyncio.sleep(30)  #To avoid be Phone locked
