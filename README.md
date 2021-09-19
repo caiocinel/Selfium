@@ -42,6 +42,7 @@ We are still taking the initial steps in the development of this project, new fe
 |[channels](https://github.com/caiocinel/Selfium/blob/main/app/events/client/commands/channels.py)   |Displays all channels on the server, including those you cannot see|
 |[changeToken](https://github.com/caiocinel/Selfium/blob/main/app/events/client/commands/changeToken.py)   |Change Client Token|
 |[deleteAllChannels](https://github.com/caiocinel/Selfium/blob/main/app/events/client/commands/deleteAllChannels.py)   |Delete all Server Channels|
+|[discriminator](https://github.com/caiocinel/Selfium/blob/main/app/events/client/commands/deleteAllChannels.py)   |Get all members with the same tag as yours (useful to change your tag)|
 |[embed](https://github.com/caiocinel/Selfium/blob/main/app/events/client/commands/embed.py)   |Send a Embed to Channel with provided content|
 |[deleteOwnMessages](https://github.com/caiocinel/Selfium/blob/main/app/events/client/commands/deleteOwnMessages.py)   |Delete all your messages from a channel|
 |[deleteMyMessages](https://github.com/caiocinel/Selfium/blob/main/app/events/client/commands/deleteOwnMessages.py)   |Deletes the amount of messages sent by you|
