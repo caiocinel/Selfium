@@ -3,7 +3,7 @@ import asyncio
 
 from app.vars.client import client
 from app.helpers import sendEmbed, Notify
-from app.filesystem import ignore
+from app.filesystem import ignore, error
     
 @client.command(aliases=['muteServerList', 'mas', 'forceMuteServers'])
 async def muteAllServers(ctx):
@@ -27,7 +27,8 @@ async def muteAllServers(ctx):
                 await Message.edit(f"> Servers mutated until now: **{int(muted_servers)}** / **{len(client.guilds)}**.\n> Current Status: **Starting...**")
 
             await asyncio.sleep(0.3)
-        except:
+        except Exception as e:
+            error(e)
             pass
 
     

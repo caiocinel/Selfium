@@ -2,7 +2,7 @@ import asyncio
 from discord.ext import commands
 from app.vars.client import client
 from app.helpers import Notify
-from app.filesystem import ignore
+from app.filesystem import ignore, error
 
 
 @client.command(aliases=['removeAllRoles'])
@@ -20,7 +20,8 @@ async def deleteAllRoles(ctx):
         try:
             await role.delete()
             await asyncio.sleep(0.33)
-        except:
+        except Exception as e:
+            error(e)
             pass         
     else:
         notify.success(content=f'Successful deleted all roles')    

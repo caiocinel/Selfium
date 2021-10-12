@@ -1,7 +1,7 @@
 import asyncio, discord
 from app.vars.client import client
 from app.helpers import Notify, sendEmbed
-from app.filesystem import ignore
+from app.filesystem import ignore, error
 
 ## Require implement a new way to delete own messages and show notifications with less api requests
 
@@ -29,6 +29,7 @@ async def deleteMyMessages(ctx, amount, status=True):
                     if len(MessageList) < int(amount) and message and not message == Message and message.author == ctx.author:
                         MessageList.append(message)
                 except Exception as e:
+                    error(e)
                     pass
             for message in MessageList:
                 try:
@@ -42,6 +43,7 @@ async def deleteMyMessages(ctx, amount, status=True):
                     else:
                         await Message.edit(f"> Deleted messages until now: **{int(DeletedCount)}** / **{len(MessageList)}**.\n> Current Status: **In progress...**")
                 except Exception as e:
+                    error(e)
                     pass
 
             if (Message.embeds):

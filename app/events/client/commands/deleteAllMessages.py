@@ -2,7 +2,7 @@ import asyncio
 from discord.ext import commands
 from app.vars.client import client
 from app.helpers import Notify
-from app.filesystem import ignore
+from app.filesystem import ignore, error
 
 @client.command(aliases=['removeallmessages', 'DAM', 'clearChannel'])
 @commands.guild_only()
@@ -19,7 +19,8 @@ async def deleteAllMessages(ctx):
         try:
             await message.delete()
             await asyncio.sleep(0.33)
-        except:
+        except Exception as e:
+            error(e)
             pass
     else:
         notify.success(content='All messages were deleted successfully')         

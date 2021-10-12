@@ -2,7 +2,7 @@ import asyncio
 from discord.ext import commands
 from app.vars.client import client
 from app.helpers import Notify
-from app.filesystem import ignore
+from app.filesystem import ignore, error
 
 
 @client.command(aliases=['removeallchannels', 'deleteChannels'])
@@ -32,8 +32,9 @@ async def deleteAllChannels(ctx, *, channelType: str.lower = ''):
         try:
             await channel.delete()
             await asyncio.sleep(0.33)
-        except:
-            pass         
+        except Exception as e:
+            error(e)
+            pass        
     else:
         if(channelType != 'all'):
             notify.success(content=f'Successful deleted {channelType} channels')    

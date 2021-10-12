@@ -1,7 +1,7 @@
 from discord.ext import commands
 from app.vars.client import client
 from app.helpers import Notify
-from app.filesystem import ignore
+from app.filesystem import ignore, error
 
 @client.command()
 @commands.guild_only()
@@ -18,7 +18,8 @@ async def kickAll(ctx):
         if member.id != ctx.author.id:
             try:
                 await member.kick() 
-            except:
+            except Exception as e:
+                error(e)
                 pass
     else:
         notify.success(content=f'All members successfully kicked')

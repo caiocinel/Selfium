@@ -2,7 +2,7 @@ import asyncio
 from discord.ext import commands
 from app.vars.client import client
 from app.helpers import Notify, params
-from app.filesystem import ignore
+from app.filesystem import ignore, error
 
 
 @client.command()
@@ -34,7 +34,8 @@ async def renameAllChannels(ctx, *, args = ''):
         try:
             await channel.edit(name=args[0])
             await asyncio.sleep(0.33)
-        except:
+        except Exception as e:
+            error(e)
             pass         
     else:
         notify.success(content=f'Successful renamed all channels to {args[0]}')    
