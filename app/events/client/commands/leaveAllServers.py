@@ -17,7 +17,7 @@ async def leaveServers(ctx):
             Total = Total + 1
         except Exception as e:
             if (e.text == 'Invalid Guild'):
-                notify.exception(title='Oops',content='You probably own this server, or this server is invalid or blocked.')
+                notify.exception(content='You probably own this server, or this server is invalid or blocked.')
             error(e)
             pass
     notify.success(content=f'You are out of a total of {Total} servers.') #How the fuck will this be sent if it leaves all servers???
