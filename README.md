@@ -18,8 +18,7 @@
 
 # Configuration
 
-***New - We are testing a new feature where the settings file is created automatically. Forget about editing files manually, you will be asked to enter your Token and Prefix when needed.***
-
+The configuration is generated automatically according to the initialization and use of the commands, in the first initialization information necessary for operation will be requested.
 
 Your settings are stored in **"/data/config.json"**, in it you can find all your settings, but be very careful when manipulating and sharing this file in public, as no information is encrypted.
 
