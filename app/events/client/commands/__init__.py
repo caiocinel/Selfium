@@ -20,6 +20,7 @@ from .banAll import *
 from .kickAll import *
 from .removeAllFriends import *
 from .deleteOwnMessages import *
+from .deleteAllRoles import *
 from .changeToken import *
 from .embed import *
 from .ip import *
