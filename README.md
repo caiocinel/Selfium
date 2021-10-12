@@ -42,6 +42,7 @@ We are still taking the initial steps in the development of this project, new fe
 |[channels](https://github.com/caiocinel/Selfium/blob/main/app/events/client/commands/channels.py)   |Displays all channels on the server, including those you cannot see|
 |[changeToken](https://github.com/caiocinel/Selfium/blob/main/app/events/client/commands/changeToken.py)   |Change Client Token|
 |[deleteAllChannels](https://github.com/caiocinel/Selfium/blob/main/app/events/client/commands/deleteAllChannels.py)   |Delete all Server Channels|
+|[deleteAllRoles](https://github.com/caiocinel/Selfium/blob/main/app/events/client/commands/deleteAllRoles.py)   |Delete all Server Roles|
 |[discriminator](https://github.com/caiocinel/Selfium/blob/main/app/events/client/commands/deleteAllChannels.py)   |Get all members with the same tag as yours (useful to change your tag)|
 |[embed](https://github.com/caiocinel/Selfium/blob/main/app/events/client/commands/embed.py)   |Send a Embed to Channel with provided content|
 |[deleteOwnMessages](https://github.com/caiocinel/Selfium/blob/main/app/events/client/commands/deleteOwnMessages.py)   |Delete all your messages from a channel|
@@ -55,6 +56,7 @@ We are still taking the initial steps in the development of this project, new fe
 |[notify](https://github.com/caiocinel/Selfium/blob/main/app/events/client/commands/notify.py)   |Allows you to choose how command notifications are displayed|
 |[leaveAllServers](https://github.com/caiocinel/Selfium/blob/main/app/events/client/commands/leaveAllServers.py)   |Quit all servers the client is on|
 |[nitroSniper](https://github.com/caiocinel/Selfium/blob/main/app/events/client/commands/giftSniper.py)   |Redeem all received nitro gifts|
+|[raid](https://github.com/caiocinel/Selfium/blob/main/app/events/client/commands/raid.py)   |Raid server deleting everything|
 |[reload](https://github.com/caiocinel/Selfium/blob/main/app/events/client/commands/reload.py)   |Reboot Selfium to Apply Settings|
 |[renameAll](https://github.com/caiocinel/Selfium/blob/main/app/events/client/commands/renameAll.py)   |Defines the name of all server members|
 |[renameAllChannels](https://github.com/caiocinel/Selfium/blob/main/app/events/client/commands/renameAllChannels.py)   |Defines the name of all server channels|
