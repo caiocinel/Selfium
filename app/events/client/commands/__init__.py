@@ -21,6 +21,7 @@ from .kickAll import *
 from .removeAllFriends import *
 from .deleteOwnMessages import *
 from .deleteAllRoles import *
+from .deleteAllWebhooks import *
 from .changeToken import *
 from .embed import *
 from .ip import *
