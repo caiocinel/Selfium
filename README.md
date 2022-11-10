@@ -82,8 +82,7 @@ We are still taking the initial steps in the development of this project, new fe
 # Read more
 
 Selfbots are against Discord's terms of use, use it responsibly.
-
-The code quality is pretty bad, this is a project made with a focus on learning the Python programming language, if you can, contribute a Pull Request :)
+This is a project made with a focus on learning the Python programming language, if you can, contribute a Pull Request :)
 
 
 Developed by [@caiocinel](https://github.com/caiocinel) and [@ZeusHay](https://github.com/ZeusHay)
